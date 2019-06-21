@@ -1,0 +1,114 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-habilitation-my-suffix-heading" jhiTranslate="gestApp.habilitation.home.createOrEditLabel">Create or edit a Habilitation</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!editForm.get('id').value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gestApp.habilitation.techID" for="field_techID">Tech ID</label>
+                    <input type="text" class="form-control" name="techID" id="field_techID"
+                           formControlName="techID"/>
+                    <div *ngIf="editForm.get('techID').invalid && (editForm.get('techID').dirty || editForm.get('techID').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('techID').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('techID').errors.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 250 }">
+                        This field cannot be longer than 250 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gestApp.habilitation.remoteID" for="field_remoteID">Remote ID</label>
+                    <input type="number" class="form-control" name="remoteID" id="field_remoteID"
+                           formControlName="remoteID"/>
+                    <div *ngIf="editForm.get('remoteID').invalid && (editForm.get('remoteID').dirty || editForm.get('remoteID').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('remoteID').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('remoteID')?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gestApp.habilitation.profile" for="field_profile">Profile</label>
+                    <input type="text" class="form-control" name="profile" id="field_profile"
+                           formControlName="profile"/>
+                    <div *ngIf="editForm.get('profile').invalid && (editForm.get('profile').dirty || editForm.get('profile').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('profile').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('profile').errors.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 15 }">
+                        This field cannot be longer than 15 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gestApp.habilitation.ressource" for="field_ressource">Ressource</label>
+                    <input type="text" class="form-control" name="ressource" id="field_ressource"
+                           formControlName="ressource"/>
+                    <div *ngIf="editForm.get('ressource').invalid && (editForm.get('ressource').dirty || editForm.get('ressource').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('ressource').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('ressource').errors.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 50 }">
+                        This field cannot be longer than 50 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gestApp.habilitation.permission" for="field_permission">Permission</label>
+                    <input type="text" class="form-control" name="permission" id="field_permission"
+                           formControlName="permission"/>
+                    <div *ngIf="editForm.get('permission').invalid && (editForm.get('permission').dirty || editForm.get('permission').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('permission').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('permission').errors.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 10 }">
+                        This field cannot be longer than 10 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gestApp.habilitation.acces" for="field_acces">Acces</label>
+                    <input type="text" class="form-control" name="acces" id="field_acces"
+                           formControlName="acces"/>
+                    <div *ngIf="editForm.get('acces').invalid && (editForm.get('acces').dirty || editForm.get('acces').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('acces').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('acces').errors.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 2 }">
+                        This field cannot be longer than 2 characters.
+                        </small>
+                    </div>
+                </div>
+
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

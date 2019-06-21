@@ -1,0 +1,63 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="reduction">
+            <h2><span jhiTranslate="gestApp.reduction.detail.title">Reduction</span> {{reduction.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="gestApp.reduction.techID">Tech ID</span></dt>
+                <dd>
+                    <span>{{reduction.techID}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.reduction.remoteID">Remote ID</span></dt>
+                <dd>
+                    <span>{{reduction.remoteID}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.reduction.libelle">Libelle</span></dt>
+                <dd>
+                    <span>{{reduction.libelle}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.reduction.typeReduction">Type Reduction</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'gestApp.TypeReduction.' + reduction.typeReduction}}">{{reduction.typeReduction}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.reduction.valeurReduction">Valeur Reduction</span></dt>
+                <dd>
+                    <span>{{reduction.valeurReduction}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.reduction.estActif">Est Actif</span></dt>
+                <dd>
+                    <span>{{reduction.estActif}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.reduction.creeLe">Cree Le</span></dt>
+                <dd>
+                    <span>{{reduction.creeLe}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.reduction.creePar">Cree Par</span></dt>
+                <dd>
+                    <span>{{reduction.creePar}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.reduction.modifLe">Modif Le</span></dt>
+                <dd>
+                    <span>{{reduction.modifLe}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.reduction.modifPar">Modif Par</span></dt>
+                <dd>
+                    <span>{{reduction.modifPar}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/reduction-my-suffix', reduction.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

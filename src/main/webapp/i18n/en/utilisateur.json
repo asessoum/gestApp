@@ -1,0 +1,38 @@
+{
+  "gestApp": {
+    "utilisateur": {
+      "home": {
+        "title": "Utilisateurs",
+        "createLabel": "Create a new Utilisateur",
+        "createOrEditLabel": "Create or edit a Utilisateur",
+        "notFound": "No Utilisateur found"
+      },
+      "created": "A new Utilisateur is created with identifier {{ param }}",
+      "updated": "A Utilisateur is updated with identifier {{ param }}",
+      "deleted": "A Utilisateur is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Utilisateur {{ id }}?"
+      },
+      "detail": {
+        "title": "Utilisateur"
+      },
+      "techID": "Tech ID",
+      "remoteID": "Remote ID",
+      "login": "Login",
+      "mdp": "Mdp",
+      "nom": "Nom",
+      "prenom": "Prenom",
+      "dateNaissance": "Date Naissance",
+      "telephone": "Telephone",
+      "email": "Email",
+      "dateMajMdp": "Date Maj Mdp",
+      "statusConnexion": "Status Connexion",
+      "estActif": "Est Actif",
+      "creeLe": "Cree Le",
+      "creePar": "Cree Par",
+      "modifLe": "Modif Le",
+      "modifPar": "Modif Par",
+      "employe": "Employe"
+    }
+  }
+}

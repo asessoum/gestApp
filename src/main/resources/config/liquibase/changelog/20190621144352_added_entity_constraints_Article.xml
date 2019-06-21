@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+    <!--
+        Added the constraints for entity Article.
+    -->
+    <changeSet id="20190621144352-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="categorie_id"
+                                 baseTableName="article"
+                                 constraintName="fk_article_categorie_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="categorie"/>
+
+        <addForeignKeyConstraint baseColumnNames="reduction_id"
+                                 baseTableName="article"
+                                 constraintName="fk_article_reduction_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="reduction"/>
+
+        <addForeignKeyConstraint baseColumnNames="fournisseur_id"
+                                 baseTableName="article"
+                                 constraintName="fk_article_fournisseur_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="fournisseur"/>
+
+        <addForeignKeyConstraint baseColumnNames="composition_id"
+                                 baseTableName="article"
+                                 constraintName="fk_article_composition_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="article_compose"/>
+
+        <addForeignKeyConstraint baseColumnNames="stock_id"
+                                 baseTableName="article"
+                                 constraintName="fk_article_stock_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="stock"/>
+
+    </changeSet>
+</databaseChangeLog>

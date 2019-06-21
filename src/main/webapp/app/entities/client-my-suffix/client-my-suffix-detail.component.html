@@ -1,0 +1,109 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="client">
+            <h2><span jhiTranslate="gestApp.client.detail.title">Client</span> {{client.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="gestApp.client.techID">Tech ID</span></dt>
+                <dd>
+                    <span>{{client.techID}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.client.remoteID">Remote ID</span></dt>
+                <dd>
+                    <span>{{client.remoteID}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.client.nom">Nom</span></dt>
+                <dd>
+                    <span>{{client.nom}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.client.prenom">Prenom</span></dt>
+                <dd>
+                    <span>{{client.prenom}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.client.naissance">Naissance</span></dt>
+                <dd>
+                    <span>{{client.naissance}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.client.genre">Genre</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'gestApp.Genre.' + client.genre}}">{{client.genre}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.client.numCarteCli">Num Carte Cli</span></dt>
+                <dd>
+                    <span>{{client.numCarteCli}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.client.dCarteUtil">D Carte Util</span></dt>
+                <dd>
+                    <span>{{client.dCarteUtil}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.client.tel">Tel</span></dt>
+                <dd>
+                    <span>{{client.tel}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.client.email">Email</span></dt>
+                <dd>
+                    <span>{{client.email}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.client.photoID">Photo ID</span></dt>
+                <dd>
+                    <span>{{client.photoID}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.client.description">Description</span></dt>
+                <dd>
+                    <span>{{client.description}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.client.estActif">Est Actif</span></dt>
+                <dd>
+                    <span>{{client.estActif}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.client.creeLe">Cree Le</span></dt>
+                <dd>
+                    <span>{{client.creeLe}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.client.creePar">Cree Par</span></dt>
+                <dd>
+                    <span>{{client.creePar}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.client.modifLe">Modif Le</span></dt>
+                <dd>
+                    <span>{{client.modifLe}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.client.modifPar">Modif Par</span></dt>
+                <dd>
+                    <span>{{client.modifPar}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.client.langue">Langue</span></dt>
+                <dd>
+                    <div *ngIf="client.langueId">
+                        <a [routerLink]="['/langue-my-suffix', client.langueId, 'view']">{{client.langueId}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="gestApp.client.commercial">Commercial</span></dt>
+                <dd>
+                    <div *ngIf="client.commercialId">
+                        <a [routerLink]="['/employe-my-suffix', client.commercialId, 'view']">{{client.commercialId}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="gestApp.client.adresses">Adresses</span></dt>
+                <dd>
+                    <span *ngFor="let adresses of client.adresses; let last = last">
+                        <a [routerLink]="['/adresse-my-suffix', adresses?.id, 'view' ]">{{adresses.id}}</a>{{last ? '' : ', '}}
+                    </span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/client-my-suffix', client.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

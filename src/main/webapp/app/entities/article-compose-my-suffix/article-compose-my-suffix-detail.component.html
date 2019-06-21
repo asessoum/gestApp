@@ -1,0 +1,35 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="articleCompose">
+            <h2><span jhiTranslate="gestApp.articleCompose.detail.title">Article Compose</span> {{articleCompose.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="gestApp.articleCompose.techID">Tech ID</span></dt>
+                <dd>
+                    <span>{{articleCompose.techID}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.articleCompose.remoteID">Remote ID</span></dt>
+                <dd>
+                    <span>{{articleCompose.remoteID}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.articleCompose.nombre">Nombre</span></dt>
+                <dd>
+                    <span>{{articleCompose.nombre}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/article-compose-my-suffix', articleCompose.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

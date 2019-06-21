@@ -1,0 +1,75 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="gestApp.reduction.home.title">Reductions</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-reduction-my-suffix" [routerLink]="['/reduction-my-suffix/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="gestApp.reduction.home.createLabel">
+            Create new Reduction
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="alert alert-warning" *ngIf="reductions?.length === 0">
+        <span jhiTranslate="gestApp.reduction.home.notFound">No reductions found</span>
+    </div>
+    <div class="table-responsive" *ngIf="reductions?.length > 0">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="gestApp.reduction.techID">Tech ID</span></th>
+            <th><span jhiTranslate="gestApp.reduction.remoteID">Remote ID</span></th>
+            <th><span jhiTranslate="gestApp.reduction.libelle">Libelle</span></th>
+            <th><span jhiTranslate="gestApp.reduction.typeReduction">Type Reduction</span></th>
+            <th><span jhiTranslate="gestApp.reduction.valeurReduction">Valeur Reduction</span></th>
+            <th><span jhiTranslate="gestApp.reduction.estActif">Est Actif</span></th>
+            <th><span jhiTranslate="gestApp.reduction.creeLe">Cree Le</span></th>
+            <th><span jhiTranslate="gestApp.reduction.creePar">Cree Par</span></th>
+            <th><span jhiTranslate="gestApp.reduction.modifLe">Modif Le</span></th>
+            <th><span jhiTranslate="gestApp.reduction.modifPar">Modif Par</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let reduction of reductions ;trackBy: trackId">
+                <td><a [routerLink]="['/reduction-my-suffix', reduction.id, 'view' ]">{{reduction.id}}</a></td>
+                <td>{{reduction.techID}}</td>
+                <td>{{reduction.remoteID}}</td>
+                <td>{{reduction.libelle}}</td>
+                <td jhiTranslate="{{'gestApp.TypeReduction.' + reduction.typeReduction}}">{{reduction.typeReduction}}</td>
+                <td>{{reduction.valeurReduction}}</td>
+                <td>{{reduction.estActif}}</td>
+                <td>{{reduction.creeLe | date:'medium'}}</td>
+                <td>{{reduction.creePar}}</td>
+                <td>{{reduction.modifLe | date:'medium'}}</td>
+                <td>{{reduction.modifPar}}</td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/reduction-my-suffix', reduction.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/reduction-my-suffix', reduction.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', 'reduction-my-suffix', { outlets: { popup: reduction.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

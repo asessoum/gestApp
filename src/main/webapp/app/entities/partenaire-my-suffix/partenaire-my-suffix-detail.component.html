@@ -1,0 +1,113 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="partenaire">
+            <h2><span jhiTranslate="gestApp.partenaire.detail.title">Partenaire</span> {{partenaire.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="gestApp.partenaire.techID">Tech ID</span></dt>
+                <dd>
+                    <span>{{partenaire.techID}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.partenaire.remoteID">Remote ID</span></dt>
+                <dd>
+                    <span>{{partenaire.remoteID}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.partenaire.raisonSociale">Raison Sociale</span></dt>
+                <dd>
+                    <span>{{partenaire.raisonSociale}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.partenaire.nombreSalaries">Nombre Salaries</span></dt>
+                <dd>
+                    <span>{{partenaire.nombreSalaries}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.partenaire.estActif">Est Actif</span></dt>
+                <dd>
+                    <span>{{partenaire.estActif}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.partenaire.creeLe">Cree Le</span></dt>
+                <dd>
+                    <span>{{partenaire.creeLe}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.partenaire.creePar">Cree Par</span></dt>
+                <dd>
+                    <span>{{partenaire.creePar}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.partenaire.modifLe">Modif Le</span></dt>
+                <dd>
+                    <span>{{partenaire.modifLe}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.partenaire.modifPar">Modif Par</span></dt>
+                <dd>
+                    <span>{{partenaire.modifPar}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.partenaire.langue">Langue</span></dt>
+                <dd>
+                    <div *ngIf="partenaire.langueId">
+                        <a [routerLink]="['/langue-my-suffix', partenaire.langueId, 'view']">{{partenaire.langueId}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="gestApp.partenaire.adresse">Adresse</span></dt>
+                <dd>
+                    <div *ngIf="partenaire.adresseId">
+                        <a [routerLink]="['/adresse-my-suffix', partenaire.adresseId, 'view']">{{partenaire.adresseId}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="gestApp.partenaire.references">References</span></dt>
+                <dd>
+                    <div *ngIf="partenaire.referencesId">
+                        <a [routerLink]="['/reference-my-suffix', partenaire.referencesId, 'view']">{{partenaire.referencesId}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="gestApp.partenaire.categories">Categories</span></dt>
+                <dd>
+                    <div *ngIf="partenaire.categoriesId">
+                        <a [routerLink]="['/categorie-my-suffix', partenaire.categoriesId, 'view']">{{partenaire.categoriesId}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="gestApp.partenaire.articles">Articles</span></dt>
+                <dd>
+                    <div *ngIf="partenaire.articlesId">
+                        <a [routerLink]="['/article-my-suffix', partenaire.articlesId, 'view']">{{partenaire.articlesId}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="gestApp.partenaire.reductions">Reductions</span></dt>
+                <dd>
+                    <div *ngIf="partenaire.reductionsId">
+                        <a [routerLink]="['/reduction-my-suffix', partenaire.reductionsId, 'view']">{{partenaire.reductionsId}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="gestApp.partenaire.profiles">Profiles</span></dt>
+                <dd>
+                    <div *ngIf="partenaire.profilesId">
+                        <a [routerLink]="['/profile-my-suffix', partenaire.profilesId, 'view']">{{partenaire.profilesId}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="gestApp.partenaire.habilitations">Habilitations</span></dt>
+                <dd>
+                    <div *ngIf="partenaire.habilitationsId">
+                        <a [routerLink]="['/habilitation-my-suffix', partenaire.habilitationsId, 'view']">{{partenaire.habilitationsId}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="gestApp.partenaire.fournisseurs">Fournisseurs</span></dt>
+                <dd>
+                    <div *ngIf="partenaire.fournisseursId">
+                        <a [routerLink]="['/fournisseur-my-suffix', partenaire.fournisseursId, 'view']">{{partenaire.fournisseursId}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/partenaire-my-suffix', partenaire.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

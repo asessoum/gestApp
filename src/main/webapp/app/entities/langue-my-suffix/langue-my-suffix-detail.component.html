@@ -1,0 +1,61 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="langue">
+            <h2><span jhiTranslate="gestApp.langue.detail.title">Langue</span> {{langue.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="gestApp.langue.techID">Tech ID</span></dt>
+                <dd>
+                    <span>{{langue.techID}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.langue.remoteID">Remote ID</span></dt>
+                <dd>
+                    <span>{{langue.remoteID}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.langue.libelle">Libelle</span></dt>
+                <dd>
+                    <span>{{langue.libelle}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.langue.estActif">Est Actif</span></dt>
+                <dd>
+                    <span>{{langue.estActif}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.langue.creeLe">Cree Le</span></dt>
+                <dd>
+                    <span>{{langue.creeLe}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.langue.creePar">Cree Par</span></dt>
+                <dd>
+                    <span>{{langue.creePar}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.langue.modifLe">Modif Le</span></dt>
+                <dd>
+                    <span>{{langue.modifLe}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.langue.modifPar">Modif Par</span></dt>
+                <dd>
+                    <span>{{langue.modifPar}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.langue.pays">Pays</span></dt>
+                <dd>
+                    <div *ngIf="langue.paysId">
+                        <a [routerLink]="['/pays-my-suffix', langue.paysId, 'view']">{{langue.paysId}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/langue-my-suffix', langue.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

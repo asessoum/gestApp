@@ -1,0 +1,32 @@
+{
+  "gestApp": {
+    "vente": {
+      "home": {
+        "title": "Ventes",
+        "createLabel": "Create a new Vente",
+        "createOrEditLabel": "Create or edit a Vente",
+        "notFound": "No Vente found"
+      },
+      "created": "A new Vente is created with identifier {{ param }}",
+      "updated": "A Vente is updated with identifier {{ param }}",
+      "deleted": "A Vente is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Vente {{ id }}?"
+      },
+      "detail": {
+        "title": "Vente"
+      },
+      "techID": "Tech ID",
+      "remoteID": "Remote ID",
+      "quantite": "Quantite",
+      "prixVente": "Prix Vente",
+      "margeVente": "Marge Vente",
+      "creeLe": "Cree Le",
+      "creePar": "Cree Par",
+      "modifLe": "Modif Le",
+      "modifPar": "Modif Par",
+      "commande": "Commande",
+      "article": "Article"
+    }
+  }
+}

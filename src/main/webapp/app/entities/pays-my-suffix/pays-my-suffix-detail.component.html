@@ -1,0 +1,55 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="pays">
+            <h2><span jhiTranslate="gestApp.pays.detail.title">Pays</span> {{pays.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="gestApp.pays.techID">Tech ID</span></dt>
+                <dd>
+                    <span>{{pays.techID}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.pays.remoteID">Remote ID</span></dt>
+                <dd>
+                    <span>{{pays.remoteID}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.pays.nomPays">Nom Pays</span></dt>
+                <dd>
+                    <span>{{pays.nomPays}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.pays.estActif">Est Actif</span></dt>
+                <dd>
+                    <span>{{pays.estActif}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.pays.creeLe">Cree Le</span></dt>
+                <dd>
+                    <span>{{pays.creeLe}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.pays.creePar">Cree Par</span></dt>
+                <dd>
+                    <span>{{pays.creePar}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.pays.modifLe">Modif Le</span></dt>
+                <dd>
+                    <span>{{pays.modifLe}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.pays.modifPar">Modif Par</span></dt>
+                <dd>
+                    <span>{{pays.modifPar}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/pays-my-suffix', pays.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,496 @@
+//==========================
+//       ENUMERATIONS
+//==========================
+
+//**********************
+// Genre Homme ou Femme
+//**********************
+enum Genre {
+    HOMME, FEMME
+}
+
+//**********************
+// Reduction % ou prix
+//**********************
+enum TypeReduction {
+    POURCENTAGE, PRIX
+}
+
+//**********************************
+// Unite de vente unitaire ou poids 
+//**********************************
+enum UniteVente {
+    UNITAIRE, POIDS
+}
+
+//**********************************************
+// Type de mouvement de stock entrée ou sortie 
+//**********************************************
+enum TypeMouvementStock {
+    ENTREE, SORTIE
+}
+
+//==================================
+//       TABLES REFERENTIELLES
+//================================== 
+
+//**********************************
+//       PAYS : T_REF_PAYS
+//********************************** 
+entity Pays {
+    techID String required maxlength(250)
+    remoteID Integer required
+    nomPays String required maxlength(20)
+    estActif Boolean 
+    creeLe Instant
+    creePar String
+    modifLe Instant
+    modifPar String
+}
+
+//**********************************
+//       COMMUNE : T_REF_COMMUNE
+//********************************** 
+entity Commune {
+    techID String required maxlength(250)
+    remoteID Integer required
+	nomCommune String required maxlength(20)
+    nomProvince String maxlength(20)
+    nomRegion String maxlength(20)
+    estActif Boolean 
+    creeLe Instant
+    creePar String
+    modifLe Instant
+    modifPar String
+}
+
+relationship ManyToOne {
+    Commune{pays} to Pays{communes}
+}
+
+//**********************************
+//       LANGUE : T_REF_LANGUE
+//********************************** 
+entity Langue {
+    techID String required maxlength(250)
+    remoteID Integer required
+	libelle String required maxlength(20)
+    estActif Boolean 
+    creeLe Instant
+    creePar String
+    modifLe Instant
+    modifPar String
+}
+
+relationship ManyToOne {
+    Langue{pays} to Pays{langues}
+}
+
+//**********************************
+//      REFERENCE : T_REF_REFERENCE
+//********************************** 
+entity Reference {
+    techID String required maxlength(250)
+    remoteID Integer required
+	libelleRef String required maxlength(10)
+    valeurRef String required maxlength(100)
+    estActif Boolean 
+    creeLe Instant
+    creePar String
+    modifLe Instant
+    modifPar String
+}
+
+//**********************************
+//     CATEGORIE : T_REF_CATEGORIE
+//********************************** 
+entity Categorie {
+    techID String required maxlength(250)
+    remoteID Integer required
+	libelle String required maxlength(20)
+    estActif Boolean 
+    creeLe Instant
+    creePar String
+    modifLe Instant
+    modifPar String
+}
+
+relationship ManyToOne {
+    Article{categorie} to Categorie{articles}
+}
+
+//********************************
+//     ARTICLE : T_REF_ARTICLE
+//********************************
+entity Article {
+	techID String required maxlength(250)
+    remoteID Integer required
+	libelle String required maxlength(20)
+    description String maxlength(200)
+    prixDeVente Double 
+    prixDeRevient Double
+    margeBrute Double
+    estCompose Boolean required
+    uniteVente UniteVente required
+    pourcentageTva Double
+    codeBarre String
+    estActif Boolean 
+    creeLe Instant
+    creePar String
+    modifLe Instant
+    modifPar String
+}
+
+//**********************************
+//     REDUCTION : T_REF_REDUCTION
+//**********************************
+entity Reduction {
+	techID String required maxlength(250)
+    remoteID Integer required
+    libelle String required
+    typeReduction TypeReduction required
+    valeurReduction Double required
+    estActif Boolean
+    creeLe Instant
+    creePar String
+    modifLe Instant
+    modifPar String
+}
+
+relationship ManyToOne {
+    Article{reduction} to Reduction{articles}
+    Article{fournisseur} to Fournisseur{articles}
+}
+
+//*******************************
+//  FOURNISSEUR : T_FOURNISSEUR 
+//*******************************
+entity Fournisseur {
+	techID String required maxlength(250)
+    remoteID Integer required
+    nomFournisseur String required maxlength(200)
+    tel String required maxlength(10)
+    email String maxlength(50)
+    siteWeb String maxlength(50)
+    logo String maxlength(200)
+    description String maxlength (500)
+    estActif Boolean 
+    creeLe Instant
+    creePar String
+    modifLe Instant
+    modifPar String
+}
+
+//**********************************
+//       PROFILE : T_PROFILE
+//********************************** 
+entity Profile {
+	techID String required maxlength(250)
+    remoteID Integer required
+	libelle String required maxlength(20)
+    estActif Boolean 
+    creeLe Instant
+    creePar String
+    modifLe Instant
+    modifPar String
+}
+
+relationship ManyToOne {
+	Adresse{fournisseur} to Fournisseur{adresses}
+}
+
+relationship ManyToMany {
+	Fournisseur{langues} to Langue{fournisseurs}
+}
+
+relationship OneToMany {
+	Reference{partenaire} to Partenaire{references}
+	Categorie{partenaire} to Partenaire{categories}
+	Article{partenaire} to Partenaire{articles}
+    Reduction{partenaire} to Partenaire{reductions}
+    Profile{partenaire} to Partenaire{profiles}
+    Habilitation{partenaire} to Partenaire{habilitations}
+    Fournisseur{partenaire} to Partenaire{fournisseurs}
+}
+
+//==================================
+//     TABLES AUTHENTIFICATIONS
+//================================== 
+
+//***************************************
+//       USER GENERIQUE : T_UTILISATEUR
+//*************************************** 
+entity Utilisateur {
+    techID String required maxlength(250)
+    remoteID Integer required
+    login String required maxlength(6)
+	mdp String required
+	nom String required maxlength(20)
+	prenom String required maxlength(20)
+	dateNaissance Instant required
+	telephone String maxlength(15)
+	email String maxlength(100)
+	dateMajMdp Instant
+	statusConnexion Boolean
+    estActif Boolean 
+    creeLe Instant
+    creePar String
+    modifLe Instant
+    modifPar String
+}
+
+//********************************************
+//       EMPLOYE : T_EMPLOYE 
+//******************************************** 
+entity Employe {
+	techID String required maxlength(250)
+    remoteID Integer required
+    genre Genre required,
+    numCarteUti String required maxlength(20)
+    dateCarteUti Instant
+	photoID String maxlength(200)
+    description String maxlength (500)
+    estActif Boolean 
+    creeLe Instant
+    creePar String
+    modifLe Instant
+    modifPar String
+}
+
+relationship OneToOne {
+	Employe{utilisateur} to Utilisateur{employe}
+}
+
+relationship ManyToOne {
+    Adresse{utilisateur} to Employe{adresses}
+    Employe{responsable} to Partenaire{employes}
+}
+
+relationship ManyToMany {
+	Employe{langues} to Langue{employes}
+}
+
+//****************************************
+//  PROFILE UTILISATEUR : T_USER_PROFILE 
+//**************************************** 
+entity UtiProfile {
+	techID String required maxlength(250)
+    remoteID Integer required
+    estActif Boolean 
+    creeLe Instant
+    creePar String
+    modifLe Instant
+    modifPar String
+}
+
+relationship ManyToOne {
+    UtiProfile{employe} to Employe{profiles}
+    UtiProfile{profile} to Profile{employes}
+}
+
+//***********************************
+//  HABILITATION : T_HABILITATION 
+//*********************************** 
+entity Habilitation {
+	techID String required maxlength(250)
+    remoteID Integer required
+	profile String required maxlength(15)
+	ressource String required maxlength(50)
+	permission String required maxlength(10)
+	acces String required maxlength(2)
+}
+
+//==================================
+//     TABLES DYNAMIQUES
+//================================== 
+
+//**************************************
+//  ARTICLE COMPOSE : T_ARTICLE_COMPO 
+//************************************** 
+entity Adresse {
+	techID String required maxlength(250)
+    remoteID Integer required
+    numeroRue Integer 
+    nomRue String
+    complement String
+}
+relationship ManyToOne {
+	Adresse{commune} to Commune{adresses}
+}
+
+//**************************************
+//  ARTICLE COMPOSE : T_ARTICLE_COMPO 
+//************************************** 
+entity ArticleCompose {
+	techID String required maxlength(250)
+    remoteID Integer required
+    nombre Double
+}
+
+relationship ManyToOne {
+    Article{composition} to ArticleCompose{articles}
+}
+
+//**************************************
+//  STOCK : T_STOCK 
+//************************************** 
+entity Stock {
+	techID String required maxlength(250)
+    remoteID Integer required
+    quantite Double
+    quantiteMin Double
+    quantiteMax Double
+    dateModification Instant
+}
+
+relationship ManyToOne {
+    Article{stock} to Stock{articles}
+}
+
+//******************************************
+//  MOUVEMENT EN STOCK : T_MOUVEMENT_STOCK 
+//******************************************
+entity MouvementStock {
+	techID String required maxlength(250)
+    remoteID Integer required
+    quantiteTotal Double required
+    prixTotal Double required
+    prixHT Double required
+    tva Double required
+    validSup Boolean
+    validRes Boolean
+    estActif Boolean
+    type TypeMouvementStock required
+    creeLe Instant
+    creePar String
+    modifLe Instant
+    modifPar String
+}
+
+relationship ManyToMany {
+	MouvementStock{articles} to Article{mouvementStock}
+}
+
+//************************
+//  CLIENT : T_CLIENT 
+//************************
+entity Client {
+	techID String required maxlength(250)
+    remoteID Integer required
+    nom String required maxlength(20)
+    prenom String required maxlength(20)
+    naissance Instant required
+    genre Genre required
+    numCarteCli String required maxlength(20)
+    dCarteUtil Instant required
+    tel String required maxlength(10)
+    email String maxlength(50)
+    photoID String maxlength(200)
+    description String maxlength (500)
+    estActif Boolean 
+    creeLe Instant
+    creePar String
+    modifLe Instant
+    modifPar String
+}
+
+relationship ManyToOne {
+    Client{langue} to Langue{clients}
+    Client{commercial} to Employe{clients}
+}
+
+relationship ManyToMany {
+	Client{adresses} to Adresse{clients}
+}
+
+//******************************
+//  PARTENAIRE : T_PARTENAIRE 
+//******************************
+entity Partenaire {
+	techID String required maxlength(250)
+    remoteID Integer required
+	raisonSociale String maxlength(50)
+	nombreSalaries Double
+    estActif Boolean 
+    creeLe Instant
+    creePar String
+    modifLe Instant
+    modifPar String
+}
+
+relationship ManyToOne {
+    Partenaire{langue} to Langue{partenaires}
+    Partenaire{adresse} to Adresse{partenaires}
+}
+
+//**************************
+//  FACTURE : T_FACTURE 
+//**************************
+entity Facture {
+	techID String required maxlength(250)
+    remoteID Integer required
+    estReglee Boolean required
+	recu String
+    creeLe Instant
+    creePar String
+    modifLe Instant
+    modifPar String
+}
+relationship OneToOne {
+    Commande{facture} to Facture{commande}
+}
+
+//**************************
+//  COMMANDE : T_COMMANDE 
+//**************************
+entity Commande {
+	techID String required maxlength(250)
+    remoteID Integer required
+    quantiteTotal Double required
+    prixTotalCommande Double required
+    prixHT Double required
+    tva Double required
+    validSup Boolean
+    validRes Boolean
+    estActif Boolean 
+    creeLe Instant
+    creePar String
+    modifLe Instant
+    modifPar String
+}
+
+relationship ManyToOne {
+    Commande{client} to Client{commandes}
+    Commande{commercial} to Employe{commandes}
+}
+
+//**************************
+//  VENTE : T_VENTE
+//**************************
+entity Vente {
+	techID String required maxlength(250)
+    remoteID Integer required
+    quantite Double required
+    prixVente Double required
+    margeVente Double required
+    creeLe Instant
+    creePar String
+    modifLe Instant
+    modifPar String
+}
+
+relationship ManyToOne {
+    Vente{commande} to Commande{ventes}
+    Vente{article} to Article{ventes}
+}
+
+
+// Set pagination options
+paginate Client, Commande, Vente, Employe, Partenaire with infinite-scroll
+
+dto * with mapstruct
+
+// Set service options to all except few
+service all with serviceImpl
+// Set an angular suffix
+angularSuffix * with mySuffix

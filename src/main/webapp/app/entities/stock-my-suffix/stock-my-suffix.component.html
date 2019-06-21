@@ -1,0 +1,67 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="gestApp.stock.home.title">Stocks</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-stock-my-suffix" [routerLink]="['/stock-my-suffix/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="gestApp.stock.home.createLabel">
+            Create new Stock
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="alert alert-warning" *ngIf="stocks?.length === 0">
+        <span jhiTranslate="gestApp.stock.home.notFound">No stocks found</span>
+    </div>
+    <div class="table-responsive" *ngIf="stocks?.length > 0">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="gestApp.stock.techID">Tech ID</span></th>
+            <th><span jhiTranslate="gestApp.stock.remoteID">Remote ID</span></th>
+            <th><span jhiTranslate="gestApp.stock.quantite">Quantite</span></th>
+            <th><span jhiTranslate="gestApp.stock.quantiteMin">Quantite Min</span></th>
+            <th><span jhiTranslate="gestApp.stock.quantiteMax">Quantite Max</span></th>
+            <th><span jhiTranslate="gestApp.stock.dateModification">Date Modification</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let stock of stocks ;trackBy: trackId">
+                <td><a [routerLink]="['/stock-my-suffix', stock.id, 'view' ]">{{stock.id}}</a></td>
+                <td>{{stock.techID}}</td>
+                <td>{{stock.remoteID}}</td>
+                <td>{{stock.quantite}}</td>
+                <td>{{stock.quantiteMin}}</td>
+                <td>{{stock.quantiteMax}}</td>
+                <td>{{stock.dateModification | date:'medium'}}</td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/stock-my-suffix', stock.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/stock-my-suffix', stock.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', 'stock-my-suffix', { outlets: { popup: stock.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

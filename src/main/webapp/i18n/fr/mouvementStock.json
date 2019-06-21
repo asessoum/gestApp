@@ -1,0 +1,36 @@
+{
+  "gestApp": {
+    "mouvementStock": {
+      "home": {
+        "title": "MouvementStocks",
+        "createLabel": "Créer un nouveau Mouvement Stock",
+        "createOrEditLabel": "Créer ou éditer un Mouvement Stock",
+        "notFound": "Aucun Mouvement Stock trouvé"
+      },
+      "created": "Un nouveau Mouvement Stock a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Mouvement Stock avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Mouvement Stock avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Mouvement Stock {{ id }} ?"
+      },
+      "detail": {
+        "title": "Mouvement Stock"
+      },
+      "techID": "Tech ID",
+      "remoteID": "Remote ID",
+      "quantiteTotal": "Quantite Total",
+      "prixTotal": "Prix Total",
+      "prixHT": "Prix HT",
+      "tva": "Tva",
+      "validSup": "Valid Sup",
+      "validRes": "Valid Res",
+      "estActif": "Est Actif",
+      "type": "Type",
+      "creeLe": "Cree Le",
+      "creePar": "Cree Par",
+      "modifLe": "Modif Le",
+      "modifPar": "Modif Par",
+      "articles": "Articles"
+    }
+  }
+}

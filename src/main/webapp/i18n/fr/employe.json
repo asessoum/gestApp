@@ -1,0 +1,40 @@
+{
+  "gestApp": {
+    "employe": {
+      "home": {
+        "title": "Employes",
+        "createLabel": "Créer un nouveau Employe",
+        "createOrEditLabel": "Créer ou éditer un Employe",
+        "notFound": "Aucun Employe trouvé"
+      },
+      "created": "Un nouveau Employe a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Employe avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Employe avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Employe {{ id }} ?"
+      },
+      "detail": {
+        "title": "Employe"
+      },
+      "techID": "Tech ID",
+      "remoteID": "Remote ID",
+      "genre": "Genre",
+      "numCarteUti": "Num Carte Uti",
+      "dateCarteUti": "Date Carte Uti",
+      "photoID": "Photo ID",
+      "description": "Description",
+      "estActif": "Est Actif",
+      "creeLe": "Cree Le",
+      "creePar": "Cree Par",
+      "modifLe": "Modif Le",
+      "modifPar": "Modif Par",
+      "utilisateur": "Utilisateur",
+      "responsable": "Responsable",
+      "langues": "Langues",
+      "adresses": "Adresses",
+      "profiles": "Profiles",
+      "clients": "Clients",
+      "commandes": "Commandes"
+    }
+  }
+}

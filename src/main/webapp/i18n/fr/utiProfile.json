@@ -1,0 +1,30 @@
+{
+  "gestApp": {
+    "utiProfile": {
+      "home": {
+        "title": "UtiProfiles",
+        "createLabel": "Créer un nouveau Uti Profile",
+        "createOrEditLabel": "Créer ou éditer un Uti Profile",
+        "notFound": "Aucun Uti Profile trouvé"
+      },
+      "created": "Un nouveau Uti Profile a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Uti Profile avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Uti Profile avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Uti Profile {{ id }} ?"
+      },
+      "detail": {
+        "title": "Uti Profile"
+      },
+      "techID": "Tech ID",
+      "remoteID": "Remote ID",
+      "estActif": "Est Actif",
+      "creeLe": "Cree Le",
+      "creePar": "Cree Par",
+      "modifLe": "Modif Le",
+      "modifPar": "Modif Par",
+      "employe": "Employe",
+      "profile": "Profile"
+    }
+  }
+}

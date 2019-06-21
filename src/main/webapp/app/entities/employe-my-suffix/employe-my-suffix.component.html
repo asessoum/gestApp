@@ -1,0 +1,91 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="gestApp.employe.home.title">Employes</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-employe-my-suffix" [routerLink]="['/employe-my-suffix/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="gestApp.employe.home.createLabel">
+            Create new Employe
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="alert alert-warning" *ngIf="employes?.length === 0">
+        <span jhiTranslate="gestApp.employe.home.notFound">No employes found</span>
+    </div>
+    <div class="table-responsive" *ngIf="employes?.length > 0">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="reset.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="techID"><span jhiTranslate="gestApp.employe.techID">Tech ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="remoteID"><span jhiTranslate="gestApp.employe.remoteID">Remote ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="genre"><span jhiTranslate="gestApp.employe.genre">Genre</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="numCarteUti"><span jhiTranslate="gestApp.employe.numCarteUti">Num Carte Uti</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="dateCarteUti"><span jhiTranslate="gestApp.employe.dateCarteUti">Date Carte Uti</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="photoID"><span jhiTranslate="gestApp.employe.photoID">Photo ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="description"><span jhiTranslate="gestApp.employe.description">Description</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="estActif"><span jhiTranslate="gestApp.employe.estActif">Est Actif</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="creeLe"><span jhiTranslate="gestApp.employe.creeLe">Cree Le</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="creePar"><span jhiTranslate="gestApp.employe.creePar">Cree Par</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="modifLe"><span jhiTranslate="gestApp.employe.modifLe">Modif Le</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="modifPar"><span jhiTranslate="gestApp.employe.modifPar">Modif Par</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="utilisateurId"><span jhiTranslate="gestApp.employe.utilisateur">Utilisateur</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="responsableId"><span jhiTranslate="gestApp.employe.responsable">Responsable</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody infinite-scroll (scrolled)="loadPage(page + 1)" [infiniteScrollDisabled]="page >= links['last']" [infiniteScrollDistance]="0">
+            <tr *ngFor="let employe of employes ;trackBy: trackId">
+                <td><a [routerLink]="['/employe-my-suffix', employe.id, 'view' ]">{{employe.id}}</a></td>
+                <td>{{employe.techID}}</td>
+                <td>{{employe.remoteID}}</td>
+                <td jhiTranslate="{{'gestApp.Genre.' + employe.genre}}">{{employe.genre}}</td>
+                <td>{{employe.numCarteUti}}</td>
+                <td>{{employe.dateCarteUti | date:'medium'}}</td>
+                <td>{{employe.photoID}}</td>
+                <td>{{employe.description}}</td>
+                <td>{{employe.estActif}}</td>
+                <td>{{employe.creeLe | date:'medium'}}</td>
+                <td>{{employe.creePar}}</td>
+                <td>{{employe.modifLe | date:'medium'}}</td>
+                <td>{{employe.modifPar}}</td>
+                <td>
+                    <div *ngIf="employe.utilisateurId">
+                        <a [routerLink]="['../utilisateur-my-suffix', employe.utilisateurId , 'view' ]" >{{employe.utilisateurId}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="employe.responsableId">
+                        <a [routerLink]="['../partenaire-my-suffix', employe.responsableId , 'view' ]" >{{employe.responsableId}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/employe-my-suffix', employe.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/employe-my-suffix', employe.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', 'employe-my-suffix', { outlets: { popup: employe.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

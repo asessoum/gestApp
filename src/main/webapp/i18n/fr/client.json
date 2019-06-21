@@ -1,0 +1,42 @@
+{
+  "gestApp": {
+    "client": {
+      "home": {
+        "title": "Clients",
+        "createLabel": "Créer un nouveau Client",
+        "createOrEditLabel": "Créer ou éditer un Client",
+        "notFound": "Aucun Client trouvé"
+      },
+      "created": "Un nouveau Client a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Client avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Client avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Client {{ id }} ?"
+      },
+      "detail": {
+        "title": "Client"
+      },
+      "techID": "Tech ID",
+      "remoteID": "Remote ID",
+      "nom": "Nom",
+      "prenom": "Prenom",
+      "naissance": "Naissance",
+      "genre": "Genre",
+      "numCarteCli": "Num Carte Cli",
+      "dCarteUtil": "D Carte Util",
+      "tel": "Tel",
+      "email": "Email",
+      "photoID": "Photo ID",
+      "description": "Description",
+      "estActif": "Est Actif",
+      "creeLe": "Cree Le",
+      "creePar": "Cree Par",
+      "modifLe": "Modif Le",
+      "modifPar": "Modif Par",
+      "langue": "Langue",
+      "commercial": "Commercial",
+      "adresses": "Adresses",
+      "commandes": "Commandes"
+    }
+  }
+}

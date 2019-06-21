@@ -1,0 +1,81 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="fournisseur">
+            <h2><span jhiTranslate="gestApp.fournisseur.detail.title">Fournisseur</span> {{fournisseur.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="gestApp.fournisseur.techID">Tech ID</span></dt>
+                <dd>
+                    <span>{{fournisseur.techID}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.fournisseur.remoteID">Remote ID</span></dt>
+                <dd>
+                    <span>{{fournisseur.remoteID}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.fournisseur.nomFournisseur">Nom Fournisseur</span></dt>
+                <dd>
+                    <span>{{fournisseur.nomFournisseur}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.fournisseur.tel">Tel</span></dt>
+                <dd>
+                    <span>{{fournisseur.tel}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.fournisseur.email">Email</span></dt>
+                <dd>
+                    <span>{{fournisseur.email}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.fournisseur.siteWeb">Site Web</span></dt>
+                <dd>
+                    <span>{{fournisseur.siteWeb}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.fournisseur.logo">Logo</span></dt>
+                <dd>
+                    <span>{{fournisseur.logo}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.fournisseur.description">Description</span></dt>
+                <dd>
+                    <span>{{fournisseur.description}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.fournisseur.estActif">Est Actif</span></dt>
+                <dd>
+                    <span>{{fournisseur.estActif}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.fournisseur.creeLe">Cree Le</span></dt>
+                <dd>
+                    <span>{{fournisseur.creeLe}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.fournisseur.creePar">Cree Par</span></dt>
+                <dd>
+                    <span>{{fournisseur.creePar}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.fournisseur.modifLe">Modif Le</span></dt>
+                <dd>
+                    <span>{{fournisseur.modifLe}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.fournisseur.modifPar">Modif Par</span></dt>
+                <dd>
+                    <span>{{fournisseur.modifPar}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.fournisseur.langues">Langues</span></dt>
+                <dd>
+                    <span *ngFor="let langues of fournisseur.langues; let last = last">
+                        <a [routerLink]="['/langue-my-suffix', langues?.id, 'view' ]">{{langues.id}}</a>{{last ? '' : ', '}}
+                    </span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/fournisseur-my-suffix', fournisseur.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

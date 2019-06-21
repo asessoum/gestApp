@@ -1,0 +1,9 @@
+{
+  "gestApp": {
+    "TypeMouvementStock": {
+      "null": "",
+      "ENTREE": "ENTREE",
+      "SORTIE": "SORTIE"
+    }
+  }
+}

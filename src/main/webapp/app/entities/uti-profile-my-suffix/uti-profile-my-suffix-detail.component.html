@@ -1,0 +1,63 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="utiProfile">
+            <h2><span jhiTranslate="gestApp.utiProfile.detail.title">Uti Profile</span> {{utiProfile.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="gestApp.utiProfile.techID">Tech ID</span></dt>
+                <dd>
+                    <span>{{utiProfile.techID}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.utiProfile.remoteID">Remote ID</span></dt>
+                <dd>
+                    <span>{{utiProfile.remoteID}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.utiProfile.estActif">Est Actif</span></dt>
+                <dd>
+                    <span>{{utiProfile.estActif}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.utiProfile.creeLe">Cree Le</span></dt>
+                <dd>
+                    <span>{{utiProfile.creeLe}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.utiProfile.creePar">Cree Par</span></dt>
+                <dd>
+                    <span>{{utiProfile.creePar}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.utiProfile.modifLe">Modif Le</span></dt>
+                <dd>
+                    <span>{{utiProfile.modifLe}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.utiProfile.modifPar">Modif Par</span></dt>
+                <dd>
+                    <span>{{utiProfile.modifPar}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.utiProfile.employe">Employe</span></dt>
+                <dd>
+                    <div *ngIf="utiProfile.employeId">
+                        <a [routerLink]="['/employe-my-suffix', utiProfile.employeId, 'view']">{{utiProfile.employeId}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="gestApp.utiProfile.profile">Profile</span></dt>
+                <dd>
+                    <div *ngIf="utiProfile.profileId">
+                        <a [routerLink]="['/profile-my-suffix', utiProfile.profileId, 'view']">{{utiProfile.profileId}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/uti-profile-my-suffix', utiProfile.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

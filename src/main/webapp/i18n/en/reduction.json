@@ -1,0 +1,33 @@
+{
+  "gestApp": {
+    "reduction": {
+      "home": {
+        "title": "Reductions",
+        "createLabel": "Create a new Reduction",
+        "createOrEditLabel": "Create or edit a Reduction",
+        "notFound": "No Reduction found"
+      },
+      "created": "A new Reduction is created with identifier {{ param }}",
+      "updated": "A Reduction is updated with identifier {{ param }}",
+      "deleted": "A Reduction is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Reduction {{ id }}?"
+      },
+      "detail": {
+        "title": "Reduction"
+      },
+      "techID": "Tech ID",
+      "remoteID": "Remote ID",
+      "libelle": "Libelle",
+      "typeReduction": "Type Reduction",
+      "valeurReduction": "Valeur Reduction",
+      "estActif": "Est Actif",
+      "creeLe": "Cree Le",
+      "creePar": "Cree Par",
+      "modifLe": "Modif Le",
+      "modifPar": "Modif Par",
+      "partenaire": "Partenaire",
+      "articles": "Articles"
+    }
+  }
+}

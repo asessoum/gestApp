@@ -1,0 +1,61 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="adresse">
+            <h2><span jhiTranslate="gestApp.adresse.detail.title">Adresse</span> {{adresse.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="gestApp.adresse.techID">Tech ID</span></dt>
+                <dd>
+                    <span>{{adresse.techID}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.adresse.remoteID">Remote ID</span></dt>
+                <dd>
+                    <span>{{adresse.remoteID}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.adresse.numeroRue">Numero Rue</span></dt>
+                <dd>
+                    <span>{{adresse.numeroRue}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.adresse.nomRue">Nom Rue</span></dt>
+                <dd>
+                    <span>{{adresse.nomRue}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.adresse.complement">Complement</span></dt>
+                <dd>
+                    <span>{{adresse.complement}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.adresse.fournisseur">Fournisseur</span></dt>
+                <dd>
+                    <div *ngIf="adresse.fournisseurId">
+                        <a [routerLink]="['/fournisseur-my-suffix', adresse.fournisseurId, 'view']">{{adresse.fournisseurId}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="gestApp.adresse.utilisateur">Utilisateur</span></dt>
+                <dd>
+                    <div *ngIf="adresse.utilisateurId">
+                        <a [routerLink]="['/employe-my-suffix', adresse.utilisateurId, 'view']">{{adresse.utilisateurId}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="gestApp.adresse.commune">Commune</span></dt>
+                <dd>
+                    <div *ngIf="adresse.communeId">
+                        <a [routerLink]="['/commune-my-suffix', adresse.communeId, 'view']">{{adresse.communeId}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/adresse-my-suffix', adresse.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

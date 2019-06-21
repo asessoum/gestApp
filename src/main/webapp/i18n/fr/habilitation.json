@@ -1,0 +1,28 @@
+{
+  "gestApp": {
+    "habilitation": {
+      "home": {
+        "title": "Habilitations",
+        "createLabel": "Créer un nouveau Habilitation",
+        "createOrEditLabel": "Créer ou éditer un Habilitation",
+        "notFound": "Aucun Habilitation trouvé"
+      },
+      "created": "Un nouveau Habilitation a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Habilitation avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Habilitation avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Habilitation {{ id }} ?"
+      },
+      "detail": {
+        "title": "Habilitation"
+      },
+      "techID": "Tech ID",
+      "remoteID": "Remote ID",
+      "profile": "Profile",
+      "ressource": "Ressource",
+      "permission": "Permission",
+      "acces": "Acces",
+      "partenaire": "Partenaire"
+    }
+  }
+}

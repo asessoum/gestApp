@@ -1,0 +1,71 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="gestApp.facture.home.title">Factures</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-facture-my-suffix" [routerLink]="['/facture-my-suffix/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="gestApp.facture.home.createLabel">
+            Create new Facture
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="alert alert-warning" *ngIf="factures?.length === 0">
+        <span jhiTranslate="gestApp.facture.home.notFound">No factures found</span>
+    </div>
+    <div class="table-responsive" *ngIf="factures?.length > 0">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="gestApp.facture.techID">Tech ID</span></th>
+            <th><span jhiTranslate="gestApp.facture.remoteID">Remote ID</span></th>
+            <th><span jhiTranslate="gestApp.facture.estReglee">Est Reglee</span></th>
+            <th><span jhiTranslate="gestApp.facture.recu">Recu</span></th>
+            <th><span jhiTranslate="gestApp.facture.creeLe">Cree Le</span></th>
+            <th><span jhiTranslate="gestApp.facture.creePar">Cree Par</span></th>
+            <th><span jhiTranslate="gestApp.facture.modifLe">Modif Le</span></th>
+            <th><span jhiTranslate="gestApp.facture.modifPar">Modif Par</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let facture of factures ;trackBy: trackId">
+                <td><a [routerLink]="['/facture-my-suffix', facture.id, 'view' ]">{{facture.id}}</a></td>
+                <td>{{facture.techID}}</td>
+                <td>{{facture.remoteID}}</td>
+                <td>{{facture.estReglee}}</td>
+                <td>{{facture.recu}}</td>
+                <td>{{facture.creeLe | date:'medium'}}</td>
+                <td>{{facture.creePar}}</td>
+                <td>{{facture.modifLe | date:'medium'}}</td>
+                <td>{{facture.modifPar}}</td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/facture-my-suffix', facture.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/facture-my-suffix', facture.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', 'facture-my-suffix', { outlets: { popup: facture.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

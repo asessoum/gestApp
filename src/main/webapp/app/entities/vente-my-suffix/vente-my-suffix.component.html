@@ -1,0 +1,85 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="gestApp.vente.home.title">Ventes</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-vente-my-suffix" [routerLink]="['/vente-my-suffix/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="gestApp.vente.home.createLabel">
+            Create new Vente
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="alert alert-warning" *ngIf="ventes?.length === 0">
+        <span jhiTranslate="gestApp.vente.home.notFound">No ventes found</span>
+    </div>
+    <div class="table-responsive" *ngIf="ventes?.length > 0">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="reset.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="techID"><span jhiTranslate="gestApp.vente.techID">Tech ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="remoteID"><span jhiTranslate="gestApp.vente.remoteID">Remote ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="quantite"><span jhiTranslate="gestApp.vente.quantite">Quantite</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="prixVente"><span jhiTranslate="gestApp.vente.prixVente">Prix Vente</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="margeVente"><span jhiTranslate="gestApp.vente.margeVente">Marge Vente</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="creeLe"><span jhiTranslate="gestApp.vente.creeLe">Cree Le</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="creePar"><span jhiTranslate="gestApp.vente.creePar">Cree Par</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="modifLe"><span jhiTranslate="gestApp.vente.modifLe">Modif Le</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="modifPar"><span jhiTranslate="gestApp.vente.modifPar">Modif Par</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="commandeId"><span jhiTranslate="gestApp.vente.commande">Commande</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="articleId"><span jhiTranslate="gestApp.vente.article">Article</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody infinite-scroll (scrolled)="loadPage(page + 1)" [infiniteScrollDisabled]="page >= links['last']" [infiniteScrollDistance]="0">
+            <tr *ngFor="let vente of ventes ;trackBy: trackId">
+                <td><a [routerLink]="['/vente-my-suffix', vente.id, 'view' ]">{{vente.id}}</a></td>
+                <td>{{vente.techID}}</td>
+                <td>{{vente.remoteID}}</td>
+                <td>{{vente.quantite}}</td>
+                <td>{{vente.prixVente}}</td>
+                <td>{{vente.margeVente}}</td>
+                <td>{{vente.creeLe | date:'medium'}}</td>
+                <td>{{vente.creePar}}</td>
+                <td>{{vente.modifLe | date:'medium'}}</td>
+                <td>{{vente.modifPar}}</td>
+                <td>
+                    <div *ngIf="vente.commandeId">
+                        <a [routerLink]="['../commande-my-suffix', vente.commandeId , 'view' ]" >{{vente.commandeId}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="vente.articleId">
+                        <a [routerLink]="['../article-my-suffix', vente.articleId , 'view' ]" >{{vente.articleId}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/vente-my-suffix', vente.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/vente-my-suffix', vente.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', 'vente-my-suffix', { outlets: { popup: vente.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
