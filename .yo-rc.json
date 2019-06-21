@@ -1,0 +1,45 @@
+{
+  "generator-jhipster": {
+    "applicationType": "monolith",
+    "gitCompany": "",
+    "baseName": "gestApp",
+    "packageName": "fr.gest.com.application",
+    "packageFolder": "fr/gest/com/application",
+    "serverPort": 8080,
+    "serviceDiscoveryType": "eureka",
+    "authenticationType": "jwt",
+    "uaaBaseName": "../uaa",
+    "cacheProvider": "ehcache",
+    "enableHibernateCache": true,
+    "websocket": false,
+    "databaseType": "sql",
+    "devDatabaseType": "h2Disk",
+    "prodDatabaseType": "postgresql",
+    "searchEngine": false,
+    "enableSwaggerCodegen": false,
+    "messageBroker": "kafka",
+    "buildTool": "maven",
+    "useSass": true,
+    "clientPackageManager": "npm",
+    "testFrameworks": [
+      "cucumber"
+    ],
+    "enableTranslation": true,
+    "nativeLanguage": "fr",
+    "languages": [
+      "en",
+      "fr"
+    ],
+    "clientFramework": "angularX",
+    "jhiPrefix": "jhi",
+    "jhipsterVersion": "6.1.1",
+    "jwtSecretKey": "OWVkM2ZjNTQ4ZjI4ODUxMGYzMzFlOTRhNGIxMWIxNTM4NjQyYzFkYjMxMTc4NGYxMjE1NzEwNTU3NTk4MWVjODkwMDY4MjFmMGMyNjhiMDhkOWNlNzhkNzY5YWU0OGIzNzJkN2RhZDQzNWJiODM1MzVkN2I1NzI0NTgwM2RiMWU=",
+    "clientTheme": "none",
+    "entitySuffix": "",
+    "dtoSuffix": "DTO",
+    "otherModules": []
+  },
+  "git-provider": "GitHub",
+  "git-company": "asessoum",
+  "repository-name": "gestApp"
+}
