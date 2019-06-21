@@ -1,0 +1,55 @@
+{
+    "name": "Stock",
+    "fields": [
+        {
+            "fieldName": "techID",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 250
+        },
+        {
+            "fieldName": "remoteID",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "quantite",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "quantiteMin",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "quantiteMax",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "dateModification",
+            "fieldType": "Instant"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "article",
+            "otherEntityRelationshipName": "stock",
+            "relationshipName": "articles"
+        }
+    ],
+    "changelogDate": "20190621144402",
+    "entityTableName": "stock",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*",
+    "angularJSSuffix": "mySuffix"
+}

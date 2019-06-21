@@ -1,0 +1,127 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="gestApp.partenaire.home.title">Partenaires</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-partenaire-my-suffix" [routerLink]="['/partenaire-my-suffix/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="gestApp.partenaire.home.createLabel">
+            Create new Partenaire
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="alert alert-warning" *ngIf="partenaires?.length === 0">
+        <span jhiTranslate="gestApp.partenaire.home.notFound">No partenaires found</span>
+    </div>
+    <div class="table-responsive" *ngIf="partenaires?.length > 0">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="reset.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="techID"><span jhiTranslate="gestApp.partenaire.techID">Tech ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="remoteID"><span jhiTranslate="gestApp.partenaire.remoteID">Remote ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="raisonSociale"><span jhiTranslate="gestApp.partenaire.raisonSociale">Raison Sociale</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="nombreSalaries"><span jhiTranslate="gestApp.partenaire.nombreSalaries">Nombre Salaries</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="estActif"><span jhiTranslate="gestApp.partenaire.estActif">Est Actif</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="creeLe"><span jhiTranslate="gestApp.partenaire.creeLe">Cree Le</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="creePar"><span jhiTranslate="gestApp.partenaire.creePar">Cree Par</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="modifLe"><span jhiTranslate="gestApp.partenaire.modifLe">Modif Le</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="modifPar"><span jhiTranslate="gestApp.partenaire.modifPar">Modif Par</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="langueId"><span jhiTranslate="gestApp.partenaire.langue">Langue</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="adresseId"><span jhiTranslate="gestApp.partenaire.adresse">Adresse</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="referencesId"><span jhiTranslate="gestApp.partenaire.references">References</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="categoriesId"><span jhiTranslate="gestApp.partenaire.categories">Categories</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="articlesId"><span jhiTranslate="gestApp.partenaire.articles">Articles</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="reductionsId"><span jhiTranslate="gestApp.partenaire.reductions">Reductions</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="profilesId"><span jhiTranslate="gestApp.partenaire.profiles">Profiles</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="habilitationsId"><span jhiTranslate="gestApp.partenaire.habilitations">Habilitations</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="fournisseursId"><span jhiTranslate="gestApp.partenaire.fournisseurs">Fournisseurs</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody infinite-scroll (scrolled)="loadPage(page + 1)" [infiniteScrollDisabled]="page >= links['last']" [infiniteScrollDistance]="0">
+            <tr *ngFor="let partenaire of partenaires ;trackBy: trackId">
+                <td><a [routerLink]="['/partenaire-my-suffix', partenaire.id, 'view' ]">{{partenaire.id}}</a></td>
+                <td>{{partenaire.techID}}</td>
+                <td>{{partenaire.remoteID}}</td>
+                <td>{{partenaire.raisonSociale}}</td>
+                <td>{{partenaire.nombreSalaries}}</td>
+                <td>{{partenaire.estActif}}</td>
+                <td>{{partenaire.creeLe | date:'medium'}}</td>
+                <td>{{partenaire.creePar}}</td>
+                <td>{{partenaire.modifLe | date:'medium'}}</td>
+                <td>{{partenaire.modifPar}}</td>
+                <td>
+                    <div *ngIf="partenaire.langueId">
+                        <a [routerLink]="['../langue-my-suffix', partenaire.langueId , 'view' ]" >{{partenaire.langueId}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="partenaire.adresseId">
+                        <a [routerLink]="['../adresse-my-suffix', partenaire.adresseId , 'view' ]" >{{partenaire.adresseId}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="partenaire.referencesId">
+                        <a [routerLink]="['../reference-my-suffix', partenaire.referencesId , 'view' ]" >{{partenaire.referencesId}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="partenaire.categoriesId">
+                        <a [routerLink]="['../categorie-my-suffix', partenaire.categoriesId , 'view' ]" >{{partenaire.categoriesId}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="partenaire.articlesId">
+                        <a [routerLink]="['../article-my-suffix', partenaire.articlesId , 'view' ]" >{{partenaire.articlesId}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="partenaire.reductionsId">
+                        <a [routerLink]="['../reduction-my-suffix', partenaire.reductionsId , 'view' ]" >{{partenaire.reductionsId}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="partenaire.profilesId">
+                        <a [routerLink]="['../profile-my-suffix', partenaire.profilesId , 'view' ]" >{{partenaire.profilesId}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="partenaire.habilitationsId">
+                        <a [routerLink]="['../habilitation-my-suffix', partenaire.habilitationsId , 'view' ]" >{{partenaire.habilitationsId}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="partenaire.fournisseursId">
+                        <a [routerLink]="['../fournisseur-my-suffix', partenaire.fournisseursId , 'view' ]" >{{partenaire.fournisseursId}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/partenaire-my-suffix', partenaire.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/partenaire-my-suffix', partenaire.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', 'partenaire-my-suffix', { outlets: { popup: partenaire.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,55 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="categorie">
+            <h2><span jhiTranslate="gestApp.categorie.detail.title">Categorie</span> {{categorie.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="gestApp.categorie.techID">Tech ID</span></dt>
+                <dd>
+                    <span>{{categorie.techID}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.categorie.remoteID">Remote ID</span></dt>
+                <dd>
+                    <span>{{categorie.remoteID}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.categorie.libelle">Libelle</span></dt>
+                <dd>
+                    <span>{{categorie.libelle}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.categorie.estActif">Est Actif</span></dt>
+                <dd>
+                    <span>{{categorie.estActif}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.categorie.creeLe">Cree Le</span></dt>
+                <dd>
+                    <span>{{categorie.creeLe}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.categorie.creePar">Cree Par</span></dt>
+                <dd>
+                    <span>{{categorie.creePar}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.categorie.modifLe">Modif Le</span></dt>
+                <dd>
+                    <span>{{categorie.modifLe}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.categorie.modifPar">Modif Par</span></dt>
+                <dd>
+                    <span>{{categorie.modifPar}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/categorie-my-suffix', categorie.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

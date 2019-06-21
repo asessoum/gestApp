@@ -1,0 +1,85 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="mouvementStock">
+            <h2><span jhiTranslate="gestApp.mouvementStock.detail.title">Mouvement Stock</span> {{mouvementStock.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="gestApp.mouvementStock.techID">Tech ID</span></dt>
+                <dd>
+                    <span>{{mouvementStock.techID}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.mouvementStock.remoteID">Remote ID</span></dt>
+                <dd>
+                    <span>{{mouvementStock.remoteID}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.mouvementStock.quantiteTotal">Quantite Total</span></dt>
+                <dd>
+                    <span>{{mouvementStock.quantiteTotal}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.mouvementStock.prixTotal">Prix Total</span></dt>
+                <dd>
+                    <span>{{mouvementStock.prixTotal}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.mouvementStock.prixHT">Prix HT</span></dt>
+                <dd>
+                    <span>{{mouvementStock.prixHT}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.mouvementStock.tva">Tva</span></dt>
+                <dd>
+                    <span>{{mouvementStock.tva}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.mouvementStock.validSup">Valid Sup</span></dt>
+                <dd>
+                    <span>{{mouvementStock.validSup}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.mouvementStock.validRes">Valid Res</span></dt>
+                <dd>
+                    <span>{{mouvementStock.validRes}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.mouvementStock.estActif">Est Actif</span></dt>
+                <dd>
+                    <span>{{mouvementStock.estActif}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.mouvementStock.type">Type</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'gestApp.TypeMouvementStock.' + mouvementStock.type}}">{{mouvementStock.type}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.mouvementStock.creeLe">Cree Le</span></dt>
+                <dd>
+                    <span>{{mouvementStock.creeLe}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.mouvementStock.creePar">Cree Par</span></dt>
+                <dd>
+                    <span>{{mouvementStock.creePar}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.mouvementStock.modifLe">Modif Le</span></dt>
+                <dd>
+                    <span>{{mouvementStock.modifLe}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.mouvementStock.modifPar">Modif Par</span></dt>
+                <dd>
+                    <span>{{mouvementStock.modifPar}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.mouvementStock.articles">Articles</span></dt>
+                <dd>
+                    <span *ngFor="let articles of mouvementStock.articles; let last = last">
+                        <a [routerLink]="['/article-my-suffix', articles?.id, 'view' ]">{{articles.id}}</a>{{last ? '' : ', '}}
+                    </span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/mouvement-stock-my-suffix', mouvementStock.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,71 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="vente">
+            <h2><span jhiTranslate="gestApp.vente.detail.title">Vente</span> {{vente.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="gestApp.vente.techID">Tech ID</span></dt>
+                <dd>
+                    <span>{{vente.techID}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.vente.remoteID">Remote ID</span></dt>
+                <dd>
+                    <span>{{vente.remoteID}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.vente.quantite">Quantite</span></dt>
+                <dd>
+                    <span>{{vente.quantite}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.vente.prixVente">Prix Vente</span></dt>
+                <dd>
+                    <span>{{vente.prixVente}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.vente.margeVente">Marge Vente</span></dt>
+                <dd>
+                    <span>{{vente.margeVente}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.vente.creeLe">Cree Le</span></dt>
+                <dd>
+                    <span>{{vente.creeLe}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.vente.creePar">Cree Par</span></dt>
+                <dd>
+                    <span>{{vente.creePar}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.vente.modifLe">Modif Le</span></dt>
+                <dd>
+                    <span>{{vente.modifLe}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.vente.modifPar">Modif Par</span></dt>
+                <dd>
+                    <span>{{vente.modifPar}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.vente.commande">Commande</span></dt>
+                <dd>
+                    <div *ngIf="vente.commandeId">
+                        <a [routerLink]="['/commande-my-suffix', vente.commandeId, 'view']">{{vente.commandeId}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="gestApp.vente.article">Article</span></dt>
+                <dd>
+                    <div *ngIf="vente.articleId">
+                        <a [routerLink]="['/article-my-suffix', vente.articleId, 'view']">{{vente.articleId}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/vente-my-suffix', vente.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

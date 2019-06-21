@@ -1,0 +1,30 @@
+{
+  "gestApp": {
+    "facture": {
+      "home": {
+        "title": "Factures",
+        "createLabel": "Create a new Facture",
+        "createOrEditLabel": "Create or edit a Facture",
+        "notFound": "No Facture found"
+      },
+      "created": "A new Facture is created with identifier {{ param }}",
+      "updated": "A Facture is updated with identifier {{ param }}",
+      "deleted": "A Facture is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Facture {{ id }}?"
+      },
+      "detail": {
+        "title": "Facture"
+      },
+      "techID": "Tech ID",
+      "remoteID": "Remote ID",
+      "estReglee": "Est Reglee",
+      "recu": "Recu",
+      "creeLe": "Cree Le",
+      "creePar": "Cree Par",
+      "modifLe": "Modif Le",
+      "modifPar": "Modif Par",
+      "commande": "Commande"
+    }
+  }
+}

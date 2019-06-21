@@ -1,0 +1,89 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="gestApp.mouvementStock.home.title">Mouvement Stocks</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-mouvement-stock-my-suffix" [routerLink]="['/mouvement-stock-my-suffix/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="gestApp.mouvementStock.home.createLabel">
+            Create new Mouvement Stock
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="alert alert-warning" *ngIf="mouvementStocks?.length === 0">
+        <span jhiTranslate="gestApp.mouvementStock.home.notFound">No mouvementStocks found</span>
+    </div>
+    <div class="table-responsive" *ngIf="mouvementStocks?.length > 0">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="gestApp.mouvementStock.techID">Tech ID</span></th>
+            <th><span jhiTranslate="gestApp.mouvementStock.remoteID">Remote ID</span></th>
+            <th><span jhiTranslate="gestApp.mouvementStock.quantiteTotal">Quantite Total</span></th>
+            <th><span jhiTranslate="gestApp.mouvementStock.prixTotal">Prix Total</span></th>
+            <th><span jhiTranslate="gestApp.mouvementStock.prixHT">Prix HT</span></th>
+            <th><span jhiTranslate="gestApp.mouvementStock.tva">Tva</span></th>
+            <th><span jhiTranslate="gestApp.mouvementStock.validSup">Valid Sup</span></th>
+            <th><span jhiTranslate="gestApp.mouvementStock.validRes">Valid Res</span></th>
+            <th><span jhiTranslate="gestApp.mouvementStock.estActif">Est Actif</span></th>
+            <th><span jhiTranslate="gestApp.mouvementStock.type">Type</span></th>
+            <th><span jhiTranslate="gestApp.mouvementStock.creeLe">Cree Le</span></th>
+            <th><span jhiTranslate="gestApp.mouvementStock.creePar">Cree Par</span></th>
+            <th><span jhiTranslate="gestApp.mouvementStock.modifLe">Modif Le</span></th>
+            <th><span jhiTranslate="gestApp.mouvementStock.modifPar">Modif Par</span></th>
+            <th><span jhiTranslate="gestApp.mouvementStock.articles">Articles</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let mouvementStock of mouvementStocks ;trackBy: trackId">
+                <td><a [routerLink]="['/mouvement-stock-my-suffix', mouvementStock.id, 'view' ]">{{mouvementStock.id}}</a></td>
+                <td>{{mouvementStock.techID}}</td>
+                <td>{{mouvementStock.remoteID}}</td>
+                <td>{{mouvementStock.quantiteTotal}}</td>
+                <td>{{mouvementStock.prixTotal}}</td>
+                <td>{{mouvementStock.prixHT}}</td>
+                <td>{{mouvementStock.tva}}</td>
+                <td>{{mouvementStock.validSup}}</td>
+                <td>{{mouvementStock.validRes}}</td>
+                <td>{{mouvementStock.estActif}}</td>
+                <td jhiTranslate="{{'gestApp.TypeMouvementStock.' + mouvementStock.type}}">{{mouvementStock.type}}</td>
+                <td>{{mouvementStock.creeLe | date:'medium'}}</td>
+                <td>{{mouvementStock.creePar}}</td>
+                <td>{{mouvementStock.modifLe | date:'medium'}}</td>
+                <td>{{mouvementStock.modifPar}}</td>
+                <td>
+                    <span *ngFor="let articles of mouvementStock.articles; let last = last">
+                            <a class="form-control-static" [routerLink]="['../article-my-suffix', articles?.id, 'view' ]">{{articles.id}}</a>{{last ? '' : ', '}}
+                        </span>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/mouvement-stock-my-suffix', mouvementStock.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/mouvement-stock-my-suffix', mouvementStock.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', 'mouvement-stock-my-suffix', { outlets: { popup: mouvementStock.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

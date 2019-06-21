@@ -1,0 +1,93 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="commande">
+            <h2><span jhiTranslate="gestApp.commande.detail.title">Commande</span> {{commande.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="gestApp.commande.techID">Tech ID</span></dt>
+                <dd>
+                    <span>{{commande.techID}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.commande.remoteID">Remote ID</span></dt>
+                <dd>
+                    <span>{{commande.remoteID}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.commande.quantiteTotal">Quantite Total</span></dt>
+                <dd>
+                    <span>{{commande.quantiteTotal}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.commande.prixTotalCommande">Prix Total Commande</span></dt>
+                <dd>
+                    <span>{{commande.prixTotalCommande}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.commande.prixHT">Prix HT</span></dt>
+                <dd>
+                    <span>{{commande.prixHT}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.commande.tva">Tva</span></dt>
+                <dd>
+                    <span>{{commande.tva}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.commande.validSup">Valid Sup</span></dt>
+                <dd>
+                    <span>{{commande.validSup}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.commande.validRes">Valid Res</span></dt>
+                <dd>
+                    <span>{{commande.validRes}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.commande.estActif">Est Actif</span></dt>
+                <dd>
+                    <span>{{commande.estActif}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.commande.creeLe">Cree Le</span></dt>
+                <dd>
+                    <span>{{commande.creeLe}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.commande.creePar">Cree Par</span></dt>
+                <dd>
+                    <span>{{commande.creePar}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.commande.modifLe">Modif Le</span></dt>
+                <dd>
+                    <span>{{commande.modifLe}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.commande.modifPar">Modif Par</span></dt>
+                <dd>
+                    <span>{{commande.modifPar}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.commande.facture">Facture</span></dt>
+                <dd>
+                    <div *ngIf="commande.factureId">
+                        <a [routerLink]="['/facture-my-suffix', commande.factureId, 'view']">{{commande.factureId}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="gestApp.commande.client">Client</span></dt>
+                <dd>
+                    <div *ngIf="commande.clientId">
+                        <a [routerLink]="['/client-my-suffix', commande.clientId, 'view']">{{commande.clientId}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="gestApp.commande.commercial">Commercial</span></dt>
+                <dd>
+                    <div *ngIf="commande.commercialId">
+                        <a [routerLink]="['/employe-my-suffix', commande.commercialId, 'view']">{{commande.commercialId}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/commande-my-suffix', commande.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

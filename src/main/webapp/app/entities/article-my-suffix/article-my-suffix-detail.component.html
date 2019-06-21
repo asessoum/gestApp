@@ -1,0 +1,117 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="article">
+            <h2><span jhiTranslate="gestApp.article.detail.title">Article</span> {{article.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="gestApp.article.techID">Tech ID</span></dt>
+                <dd>
+                    <span>{{article.techID}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.article.remoteID">Remote ID</span></dt>
+                <dd>
+                    <span>{{article.remoteID}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.article.libelle">Libelle</span></dt>
+                <dd>
+                    <span>{{article.libelle}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.article.description">Description</span></dt>
+                <dd>
+                    <span>{{article.description}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.article.prixDeVente">Prix De Vente</span></dt>
+                <dd>
+                    <span>{{article.prixDeVente}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.article.prixDeRevient">Prix De Revient</span></dt>
+                <dd>
+                    <span>{{article.prixDeRevient}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.article.margeBrute">Marge Brute</span></dt>
+                <dd>
+                    <span>{{article.margeBrute}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.article.estCompose">Est Compose</span></dt>
+                <dd>
+                    <span>{{article.estCompose}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.article.uniteVente">Unite Vente</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'gestApp.UniteVente.' + article.uniteVente}}">{{article.uniteVente}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.article.pourcentageTva">Pourcentage Tva</span></dt>
+                <dd>
+                    <span>{{article.pourcentageTva}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.article.codeBarre">Code Barre</span></dt>
+                <dd>
+                    <span>{{article.codeBarre}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.article.estActif">Est Actif</span></dt>
+                <dd>
+                    <span>{{article.estActif}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.article.creeLe">Cree Le</span></dt>
+                <dd>
+                    <span>{{article.creeLe}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.article.creePar">Cree Par</span></dt>
+                <dd>
+                    <span>{{article.creePar}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.article.modifLe">Modif Le</span></dt>
+                <dd>
+                    <span>{{article.modifLe}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.article.modifPar">Modif Par</span></dt>
+                <dd>
+                    <span>{{article.modifPar}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.article.categorie">Categorie</span></dt>
+                <dd>
+                    <div *ngIf="article.categorieId">
+                        <a [routerLink]="['/categorie-my-suffix', article.categorieId, 'view']">{{article.categorieId}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="gestApp.article.reduction">Reduction</span></dt>
+                <dd>
+                    <div *ngIf="article.reductionId">
+                        <a [routerLink]="['/reduction-my-suffix', article.reductionId, 'view']">{{article.reductionId}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="gestApp.article.fournisseur">Fournisseur</span></dt>
+                <dd>
+                    <div *ngIf="article.fournisseurId">
+                        <a [routerLink]="['/fournisseur-my-suffix', article.fournisseurId, 'view']">{{article.fournisseurId}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="gestApp.article.composition">Composition</span></dt>
+                <dd>
+                    <div *ngIf="article.compositionId">
+                        <a [routerLink]="['/article-compose-my-suffix', article.compositionId, 'view']">{{article.compositionId}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="gestApp.article.stock">Stock</span></dt>
+                <dd>
+                    <div *ngIf="article.stockId">
+                        <a [routerLink]="['/stock-my-suffix', article.stockId, 'view']">{{article.stockId}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/article-my-suffix', article.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

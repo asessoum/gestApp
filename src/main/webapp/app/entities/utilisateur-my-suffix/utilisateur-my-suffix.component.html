@@ -1,0 +1,87 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="gestApp.utilisateur.home.title">Utilisateurs</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-utilisateur-my-suffix" [routerLink]="['/utilisateur-my-suffix/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="gestApp.utilisateur.home.createLabel">
+            Create new Utilisateur
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="alert alert-warning" *ngIf="utilisateurs?.length === 0">
+        <span jhiTranslate="gestApp.utilisateur.home.notFound">No utilisateurs found</span>
+    </div>
+    <div class="table-responsive" *ngIf="utilisateurs?.length > 0">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="gestApp.utilisateur.techID">Tech ID</span></th>
+            <th><span jhiTranslate="gestApp.utilisateur.remoteID">Remote ID</span></th>
+            <th><span jhiTranslate="gestApp.utilisateur.login">Login</span></th>
+            <th><span jhiTranslate="gestApp.utilisateur.mdp">Mdp</span></th>
+            <th><span jhiTranslate="gestApp.utilisateur.nom">Nom</span></th>
+            <th><span jhiTranslate="gestApp.utilisateur.prenom">Prenom</span></th>
+            <th><span jhiTranslate="gestApp.utilisateur.dateNaissance">Date Naissance</span></th>
+            <th><span jhiTranslate="gestApp.utilisateur.telephone">Telephone</span></th>
+            <th><span jhiTranslate="gestApp.utilisateur.email">Email</span></th>
+            <th><span jhiTranslate="gestApp.utilisateur.dateMajMdp">Date Maj Mdp</span></th>
+            <th><span jhiTranslate="gestApp.utilisateur.statusConnexion">Status Connexion</span></th>
+            <th><span jhiTranslate="gestApp.utilisateur.estActif">Est Actif</span></th>
+            <th><span jhiTranslate="gestApp.utilisateur.creeLe">Cree Le</span></th>
+            <th><span jhiTranslate="gestApp.utilisateur.creePar">Cree Par</span></th>
+            <th><span jhiTranslate="gestApp.utilisateur.modifLe">Modif Le</span></th>
+            <th><span jhiTranslate="gestApp.utilisateur.modifPar">Modif Par</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let utilisateur of utilisateurs ;trackBy: trackId">
+                <td><a [routerLink]="['/utilisateur-my-suffix', utilisateur.id, 'view' ]">{{utilisateur.id}}</a></td>
+                <td>{{utilisateur.techID}}</td>
+                <td>{{utilisateur.remoteID}}</td>
+                <td>{{utilisateur.login}}</td>
+                <td>{{utilisateur.mdp}}</td>
+                <td>{{utilisateur.nom}}</td>
+                <td>{{utilisateur.prenom}}</td>
+                <td>{{utilisateur.dateNaissance | date:'medium'}}</td>
+                <td>{{utilisateur.telephone}}</td>
+                <td>{{utilisateur.email}}</td>
+                <td>{{utilisateur.dateMajMdp | date:'medium'}}</td>
+                <td>{{utilisateur.statusConnexion}}</td>
+                <td>{{utilisateur.estActif}}</td>
+                <td>{{utilisateur.creeLe | date:'medium'}}</td>
+                <td>{{utilisateur.creePar}}</td>
+                <td>{{utilisateur.modifLe | date:'medium'}}</td>
+                <td>{{utilisateur.modifPar}}</td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/utilisateur-my-suffix', utilisateur.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/utilisateur-my-suffix', utilisateur.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', 'utilisateur-my-suffix', { outlets: { popup: utilisateur.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

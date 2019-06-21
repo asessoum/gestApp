@@ -1,0 +1,40 @@
+{
+  "gestApp": {
+    "partenaire": {
+      "home": {
+        "title": "Partenaires",
+        "createLabel": "Create a new Partenaire",
+        "createOrEditLabel": "Create or edit a Partenaire",
+        "notFound": "No Partenaire found"
+      },
+      "created": "A new Partenaire is created with identifier {{ param }}",
+      "updated": "A Partenaire is updated with identifier {{ param }}",
+      "deleted": "A Partenaire is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Partenaire {{ id }}?"
+      },
+      "detail": {
+        "title": "Partenaire"
+      },
+      "techID": "Tech ID",
+      "remoteID": "Remote ID",
+      "raisonSociale": "Raison Sociale",
+      "nombreSalaries": "Nombre Salaries",
+      "estActif": "Est Actif",
+      "creeLe": "Cree Le",
+      "creePar": "Cree Par",
+      "modifLe": "Modif Le",
+      "modifPar": "Modif Par",
+      "langue": "Langue",
+      "adresse": "Adresse",
+      "references": "References",
+      "categories": "Categories",
+      "articles": "Articles",
+      "reductions": "Reductions",
+      "profiles": "Profiles",
+      "habilitations": "Habilitations",
+      "fournisseurs": "Fournisseurs",
+      "employes": "Employes"
+    }
+  }
+}

@@ -1,0 +1,101 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="gestApp.client.home.title">Clients</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-client-my-suffix" [routerLink]="['/client-my-suffix/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="gestApp.client.home.createLabel">
+            Create new Client
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="alert alert-warning" *ngIf="clients?.length === 0">
+        <span jhiTranslate="gestApp.client.home.notFound">No clients found</span>
+    </div>
+    <div class="table-responsive" *ngIf="clients?.length > 0">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="reset.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="techID"><span jhiTranslate="gestApp.client.techID">Tech ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="remoteID"><span jhiTranslate="gestApp.client.remoteID">Remote ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="nom"><span jhiTranslate="gestApp.client.nom">Nom</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="prenom"><span jhiTranslate="gestApp.client.prenom">Prenom</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="naissance"><span jhiTranslate="gestApp.client.naissance">Naissance</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="genre"><span jhiTranslate="gestApp.client.genre">Genre</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="numCarteCli"><span jhiTranslate="gestApp.client.numCarteCli">Num Carte Cli</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="dCarteUtil"><span jhiTranslate="gestApp.client.dCarteUtil">D Carte Util</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="tel"><span jhiTranslate="gestApp.client.tel">Tel</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="email"><span jhiTranslate="gestApp.client.email">Email</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="photoID"><span jhiTranslate="gestApp.client.photoID">Photo ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="description"><span jhiTranslate="gestApp.client.description">Description</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="estActif"><span jhiTranslate="gestApp.client.estActif">Est Actif</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="creeLe"><span jhiTranslate="gestApp.client.creeLe">Cree Le</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="creePar"><span jhiTranslate="gestApp.client.creePar">Cree Par</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="modifLe"><span jhiTranslate="gestApp.client.modifLe">Modif Le</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="modifPar"><span jhiTranslate="gestApp.client.modifPar">Modif Par</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="langueId"><span jhiTranslate="gestApp.client.langue">Langue</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="commercialId"><span jhiTranslate="gestApp.client.commercial">Commercial</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody infinite-scroll (scrolled)="loadPage(page + 1)" [infiniteScrollDisabled]="page >= links['last']" [infiniteScrollDistance]="0">
+            <tr *ngFor="let client of clients ;trackBy: trackId">
+                <td><a [routerLink]="['/client-my-suffix', client.id, 'view' ]">{{client.id}}</a></td>
+                <td>{{client.techID}}</td>
+                <td>{{client.remoteID}}</td>
+                <td>{{client.nom}}</td>
+                <td>{{client.prenom}}</td>
+                <td>{{client.naissance | date:'medium'}}</td>
+                <td jhiTranslate="{{'gestApp.Genre.' + client.genre}}">{{client.genre}}</td>
+                <td>{{client.numCarteCli}}</td>
+                <td>{{client.dCarteUtil | date:'medium'}}</td>
+                <td>{{client.tel}}</td>
+                <td>{{client.email}}</td>
+                <td>{{client.photoID}}</td>
+                <td>{{client.description}}</td>
+                <td>{{client.estActif}}</td>
+                <td>{{client.creeLe | date:'medium'}}</td>
+                <td>{{client.creePar}}</td>
+                <td>{{client.modifLe | date:'medium'}}</td>
+                <td>{{client.modifPar}}</td>
+                <td>
+                    <div *ngIf="client.langueId">
+                        <a [routerLink]="['../langue-my-suffix', client.langueId , 'view' ]" >{{client.langueId}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="client.commercialId">
+                        <a [routerLink]="['../employe-my-suffix', client.commercialId , 'view' ]" >{{client.commercialId}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/client-my-suffix', client.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/client-my-suffix', client.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', 'client-my-suffix', { outlets: { popup: client.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,89 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="employe">
+            <h2><span jhiTranslate="gestApp.employe.detail.title">Employe</span> {{employe.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="gestApp.employe.techID">Tech ID</span></dt>
+                <dd>
+                    <span>{{employe.techID}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.employe.remoteID">Remote ID</span></dt>
+                <dd>
+                    <span>{{employe.remoteID}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.employe.genre">Genre</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'gestApp.Genre.' + employe.genre}}">{{employe.genre}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.employe.numCarteUti">Num Carte Uti</span></dt>
+                <dd>
+                    <span>{{employe.numCarteUti}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.employe.dateCarteUti">Date Carte Uti</span></dt>
+                <dd>
+                    <span>{{employe.dateCarteUti}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.employe.photoID">Photo ID</span></dt>
+                <dd>
+                    <span>{{employe.photoID}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.employe.description">Description</span></dt>
+                <dd>
+                    <span>{{employe.description}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.employe.estActif">Est Actif</span></dt>
+                <dd>
+                    <span>{{employe.estActif}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.employe.creeLe">Cree Le</span></dt>
+                <dd>
+                    <span>{{employe.creeLe}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.employe.creePar">Cree Par</span></dt>
+                <dd>
+                    <span>{{employe.creePar}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.employe.modifLe">Modif Le</span></dt>
+                <dd>
+                    <span>{{employe.modifLe}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.employe.modifPar">Modif Par</span></dt>
+                <dd>
+                    <span>{{employe.modifPar}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.employe.utilisateur">Utilisateur</span></dt>
+                <dd>
+                    <div *ngIf="employe.utilisateurId">
+                        <a [routerLink]="['/utilisateur-my-suffix', employe.utilisateurId, 'view']">{{employe.utilisateurId}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="gestApp.employe.responsable">Responsable</span></dt>
+                <dd>
+                    <div *ngIf="employe.responsableId">
+                        <a [routerLink]="['/partenaire-my-suffix', employe.responsableId, 'view']">{{employe.responsableId}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="gestApp.employe.langues">Langues</span></dt>
+                <dd>
+                    <span *ngFor="let langues of employe.langues; let last = last">
+                        <a [routerLink]="['/langue-my-suffix', langues?.id, 'view' ]">{{langues.id}}</a>{{last ? '' : ', '}}
+                    </span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/employe-my-suffix', employe.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

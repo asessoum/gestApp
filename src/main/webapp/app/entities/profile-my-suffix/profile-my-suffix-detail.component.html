@@ -1,0 +1,55 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="profile">
+            <h2><span jhiTranslate="gestApp.profile.detail.title">Profile</span> {{profile.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="gestApp.profile.techID">Tech ID</span></dt>
+                <dd>
+                    <span>{{profile.techID}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.profile.remoteID">Remote ID</span></dt>
+                <dd>
+                    <span>{{profile.remoteID}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.profile.libelle">Libelle</span></dt>
+                <dd>
+                    <span>{{profile.libelle}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.profile.estActif">Est Actif</span></dt>
+                <dd>
+                    <span>{{profile.estActif}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.profile.creeLe">Cree Le</span></dt>
+                <dd>
+                    <span>{{profile.creeLe}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.profile.creePar">Cree Par</span></dt>
+                <dd>
+                    <span>{{profile.creePar}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.profile.modifLe">Modif Le</span></dt>
+                <dd>
+                    <span>{{profile.modifLe}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.profile.modifPar">Modif Par</span></dt>
+                <dd>
+                    <span>{{profile.modifPar}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/profile-my-suffix', profile.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,31 @@
+{
+  "gestApp": {
+    "reference": {
+      "home": {
+        "title": "References",
+        "createLabel": "Créer un nouveau Reference",
+        "createOrEditLabel": "Créer ou éditer un Reference",
+        "notFound": "Aucun Reference trouvé"
+      },
+      "created": "Un nouveau Reference a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Reference avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Reference avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Reference {{ id }} ?"
+      },
+      "detail": {
+        "title": "Reference"
+      },
+      "techID": "Tech ID",
+      "remoteID": "Remote ID",
+      "libelleRef": "Libelle Ref",
+      "valeurRef": "Valeur Ref",
+      "estActif": "Est Actif",
+      "creeLe": "Cree Le",
+      "creePar": "Cree Par",
+      "modifLe": "Modif Le",
+      "modifPar": "Modif Par",
+      "partenaire": "Partenaire"
+    }
+  }
+}

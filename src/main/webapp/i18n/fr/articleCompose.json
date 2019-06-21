@@ -1,0 +1,25 @@
+{
+  "gestApp": {
+    "articleCompose": {
+      "home": {
+        "title": "ArticleComposes",
+        "createLabel": "Créer un nouveau Article Compose",
+        "createOrEditLabel": "Créer ou éditer un Article Compose",
+        "notFound": "Aucun Article Compose trouvé"
+      },
+      "created": "Un nouveau Article Compose a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Article Compose avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Article Compose avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Article Compose {{ id }} ?"
+      },
+      "detail": {
+        "title": "Article Compose"
+      },
+      "techID": "Tech ID",
+      "remoteID": "Remote ID",
+      "nombre": "Nombre",
+      "articles": "Articles"
+    }
+  }
+}

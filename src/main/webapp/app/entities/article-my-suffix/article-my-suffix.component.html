@@ -1,0 +1,117 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="gestApp.article.home.title">Articles</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-article-my-suffix" [routerLink]="['/article-my-suffix/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="gestApp.article.home.createLabel">
+            Create new Article
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="alert alert-warning" *ngIf="articles?.length === 0">
+        <span jhiTranslate="gestApp.article.home.notFound">No articles found</span>
+    </div>
+    <div class="table-responsive" *ngIf="articles?.length > 0">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="gestApp.article.techID">Tech ID</span></th>
+            <th><span jhiTranslate="gestApp.article.remoteID">Remote ID</span></th>
+            <th><span jhiTranslate="gestApp.article.libelle">Libelle</span></th>
+            <th><span jhiTranslate="gestApp.article.description">Description</span></th>
+            <th><span jhiTranslate="gestApp.article.prixDeVente">Prix De Vente</span></th>
+            <th><span jhiTranslate="gestApp.article.prixDeRevient">Prix De Revient</span></th>
+            <th><span jhiTranslate="gestApp.article.margeBrute">Marge Brute</span></th>
+            <th><span jhiTranslate="gestApp.article.estCompose">Est Compose</span></th>
+            <th><span jhiTranslate="gestApp.article.uniteVente">Unite Vente</span></th>
+            <th><span jhiTranslate="gestApp.article.pourcentageTva">Pourcentage Tva</span></th>
+            <th><span jhiTranslate="gestApp.article.codeBarre">Code Barre</span></th>
+            <th><span jhiTranslate="gestApp.article.estActif">Est Actif</span></th>
+            <th><span jhiTranslate="gestApp.article.creeLe">Cree Le</span></th>
+            <th><span jhiTranslate="gestApp.article.creePar">Cree Par</span></th>
+            <th><span jhiTranslate="gestApp.article.modifLe">Modif Le</span></th>
+            <th><span jhiTranslate="gestApp.article.modifPar">Modif Par</span></th>
+            <th><span jhiTranslate="gestApp.article.categorie">Categorie</span></th>
+            <th><span jhiTranslate="gestApp.article.reduction">Reduction</span></th>
+            <th><span jhiTranslate="gestApp.article.fournisseur">Fournisseur</span></th>
+            <th><span jhiTranslate="gestApp.article.composition">Composition</span></th>
+            <th><span jhiTranslate="gestApp.article.stock">Stock</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let article of articles ;trackBy: trackId">
+                <td><a [routerLink]="['/article-my-suffix', article.id, 'view' ]">{{article.id}}</a></td>
+                <td>{{article.techID}}</td>
+                <td>{{article.remoteID}}</td>
+                <td>{{article.libelle}}</td>
+                <td>{{article.description}}</td>
+                <td>{{article.prixDeVente}}</td>
+                <td>{{article.prixDeRevient}}</td>
+                <td>{{article.margeBrute}}</td>
+                <td>{{article.estCompose}}</td>
+                <td jhiTranslate="{{'gestApp.UniteVente.' + article.uniteVente}}">{{article.uniteVente}}</td>
+                <td>{{article.pourcentageTva}}</td>
+                <td>{{article.codeBarre}}</td>
+                <td>{{article.estActif}}</td>
+                <td>{{article.creeLe | date:'medium'}}</td>
+                <td>{{article.creePar}}</td>
+                <td>{{article.modifLe | date:'medium'}}</td>
+                <td>{{article.modifPar}}</td>
+                <td>
+                    <div *ngIf="article.categorieId">
+                        <a [routerLink]="['../categorie-my-suffix', article.categorieId , 'view' ]" >{{article.categorieId}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="article.reductionId">
+                        <a [routerLink]="['../reduction-my-suffix', article.reductionId , 'view' ]" >{{article.reductionId}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="article.fournisseurId">
+                        <a [routerLink]="['../fournisseur-my-suffix', article.fournisseurId , 'view' ]" >{{article.fournisseurId}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="article.compositionId">
+                        <a [routerLink]="['../article-compose-my-suffix', article.compositionId , 'view' ]" >{{article.compositionId}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="article.stockId">
+                        <a [routerLink]="['../stock-my-suffix', article.stockId , 'view' ]" >{{article.stockId}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/article-my-suffix', article.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/article-my-suffix', article.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', 'article-my-suffix', { outlets: { popup: article.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

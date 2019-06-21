@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+    <!--
+        Added the constraints for entity Partenaire.
+    -->
+    <changeSet id="20190621144405-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="langue_id"
+                                 baseTableName="partenaire"
+                                 constraintName="fk_partenaire_langue_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="langue"/>
+
+        <addForeignKeyConstraint baseColumnNames="adresse_id"
+                                 baseTableName="partenaire"
+                                 constraintName="fk_partenaire_adresse_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="adresse"/>
+
+        <addForeignKeyConstraint baseColumnNames="references_id"
+                                 baseTableName="partenaire"
+                                 constraintName="fk_partenaire_references_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="reference"/>
+
+        <addForeignKeyConstraint baseColumnNames="categories_id"
+                                 baseTableName="partenaire"
+                                 constraintName="fk_partenaire_categories_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="categorie"/>
+
+        <addForeignKeyConstraint baseColumnNames="articles_id"
+                                 baseTableName="partenaire"
+                                 constraintName="fk_partenaire_articles_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="article"/>
+
+        <addForeignKeyConstraint baseColumnNames="reductions_id"
+                                 baseTableName="partenaire"
+                                 constraintName="fk_partenaire_reductions_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="reduction"/>
+
+        <addForeignKeyConstraint baseColumnNames="profiles_id"
+                                 baseTableName="partenaire"
+                                 constraintName="fk_partenaire_profiles_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="profile"/>
+
+        <addForeignKeyConstraint baseColumnNames="habilitations_id"
+                                 baseTableName="partenaire"
+                                 constraintName="fk_partenaire_habilitations_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="habilitation"/>
+
+        <addForeignKeyConstraint baseColumnNames="fournisseurs_id"
+                                 baseTableName="partenaire"
+                                 constraintName="fk_partenaire_fournisseurs_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="fournisseur"/>
+
+    </changeSet>
+</databaseChangeLog>

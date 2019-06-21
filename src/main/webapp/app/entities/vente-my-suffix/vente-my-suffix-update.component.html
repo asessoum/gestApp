@@ -1,0 +1,135 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-vente-my-suffix-heading" jhiTranslate="gestApp.vente.home.createOrEditLabel">Create or edit a Vente</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!editForm.get('id').value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gestApp.vente.techID" for="field_techID">Tech ID</label>
+                    <input type="text" class="form-control" name="techID" id="field_techID"
+                           formControlName="techID"/>
+                    <div *ngIf="editForm.get('techID').invalid && (editForm.get('techID').dirty || editForm.get('techID').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('techID').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('techID').errors.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 250 }">
+                        This field cannot be longer than 250 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gestApp.vente.remoteID" for="field_remoteID">Remote ID</label>
+                    <input type="number" class="form-control" name="remoteID" id="field_remoteID"
+                           formControlName="remoteID"/>
+                    <div *ngIf="editForm.get('remoteID').invalid && (editForm.get('remoteID').dirty || editForm.get('remoteID').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('remoteID').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('remoteID')?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gestApp.vente.quantite" for="field_quantite">Quantite</label>
+                    <input type="number" class="form-control" name="quantite" id="field_quantite"
+                           formControlName="quantite"/>
+                    <div *ngIf="editForm.get('quantite').invalid && (editForm.get('quantite').dirty || editForm.get('quantite').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('quantite').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('quantite')?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gestApp.vente.prixVente" for="field_prixVente">Prix Vente</label>
+                    <input type="number" class="form-control" name="prixVente" id="field_prixVente"
+                           formControlName="prixVente"/>
+                    <div *ngIf="editForm.get('prixVente').invalid && (editForm.get('prixVente').dirty || editForm.get('prixVente').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('prixVente').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('prixVente')?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gestApp.vente.margeVente" for="field_margeVente">Marge Vente</label>
+                    <input type="number" class="form-control" name="margeVente" id="field_margeVente"
+                           formControlName="margeVente"/>
+                    <div *ngIf="editForm.get('margeVente').invalid && (editForm.get('margeVente').dirty || editForm.get('margeVente').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('margeVente').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('margeVente')?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gestApp.vente.creeLe" for="field_creeLe">Cree Le</label>
+                    <div class="d-flex">
+                        <input id="field_creeLe" type="datetime-local" class="form-control" name="creeLe" formControlName="creeLe" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gestApp.vente.creePar" for="field_creePar">Cree Par</label>
+                    <input type="text" class="form-control" name="creePar" id="field_creePar"
+                           formControlName="creePar"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gestApp.vente.modifLe" for="field_modifLe">Modif Le</label>
+                    <div class="d-flex">
+                        <input id="field_modifLe" type="datetime-local" class="form-control" name="modifLe" formControlName="modifLe" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gestApp.vente.modifPar" for="field_modifPar">Modif Par</label>
+                    <input type="text" class="form-control" name="modifPar" id="field_modifPar"
+                           formControlName="modifPar"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gestApp.vente.commande" for="field_commande">Commande</label>
+                    <select class="form-control" id="field_commande" name="commande" formControlName="commandeId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="commandeOption.id" *ngFor="let commandeOption of commandes; trackBy: trackCommandeById">{{commandeOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gestApp.vente.article" for="field_article">Article</label>
+                    <select class="form-control" id="field_article" name="article" formControlName="articleId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="articleOption.id" *ngFor="let articleOption of articles; trackBy: trackArticleById">{{articleOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

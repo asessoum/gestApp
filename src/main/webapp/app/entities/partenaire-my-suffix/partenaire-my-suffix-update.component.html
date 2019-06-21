@@ -1,0 +1,160 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-partenaire-my-suffix-heading" jhiTranslate="gestApp.partenaire.home.createOrEditLabel">Create or edit a Partenaire</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!editForm.get('id').value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gestApp.partenaire.techID" for="field_techID">Tech ID</label>
+                    <input type="text" class="form-control" name="techID" id="field_techID"
+                           formControlName="techID"/>
+                    <div *ngIf="editForm.get('techID').invalid && (editForm.get('techID').dirty || editForm.get('techID').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('techID').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('techID').errors.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 250 }">
+                        This field cannot be longer than 250 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gestApp.partenaire.remoteID" for="field_remoteID">Remote ID</label>
+                    <input type="number" class="form-control" name="remoteID" id="field_remoteID"
+                           formControlName="remoteID"/>
+                    <div *ngIf="editForm.get('remoteID').invalid && (editForm.get('remoteID').dirty || editForm.get('remoteID').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('remoteID').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('remoteID')?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gestApp.partenaire.raisonSociale" for="field_raisonSociale">Raison Sociale</label>
+                    <input type="text" class="form-control" name="raisonSociale" id="field_raisonSociale"
+                           formControlName="raisonSociale"/>
+                    <div *ngIf="editForm.get('raisonSociale').invalid && (editForm.get('raisonSociale').dirty || editForm.get('raisonSociale').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('raisonSociale').errors.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 50 }">
+                        This field cannot be longer than 50 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gestApp.partenaire.nombreSalaries" for="field_nombreSalaries">Nombre Salaries</label>
+                    <input type="number" class="form-control" name="nombreSalaries" id="field_nombreSalaries"
+                           formControlName="nombreSalaries"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gestApp.partenaire.estActif" for="field_estActif">Est Actif</label>
+                    <input type="checkbox" class="form-control" name="estActif" id="field_estActif"
+                           formControlName="estActif"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gestApp.partenaire.creeLe" for="field_creeLe">Cree Le</label>
+                    <div class="d-flex">
+                        <input id="field_creeLe" type="datetime-local" class="form-control" name="creeLe" formControlName="creeLe" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gestApp.partenaire.creePar" for="field_creePar">Cree Par</label>
+                    <input type="text" class="form-control" name="creePar" id="field_creePar"
+                           formControlName="creePar"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gestApp.partenaire.modifLe" for="field_modifLe">Modif Le</label>
+                    <div class="d-flex">
+                        <input id="field_modifLe" type="datetime-local" class="form-control" name="modifLe" formControlName="modifLe" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gestApp.partenaire.modifPar" for="field_modifPar">Modif Par</label>
+                    <input type="text" class="form-control" name="modifPar" id="field_modifPar"
+                           formControlName="modifPar"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gestApp.partenaire.langue" for="field_langue">Langue</label>
+                    <select class="form-control" id="field_langue" name="langue" formControlName="langueId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="langueOption.id" *ngFor="let langueOption of langues; trackBy: trackLangueById">{{langueOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gestApp.partenaire.adresse" for="field_adresse">Adresse</label>
+                    <select class="form-control" id="field_adresse" name="adresse" formControlName="adresseId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="adresseOption.id" *ngFor="let adresseOption of adresses; trackBy: trackAdresseById">{{adresseOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gestApp.partenaire.references" for="field_references">References</label>
+                    <select class="form-control" id="field_references" name="references" formControlName="referencesId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="referenceOption.id" *ngFor="let referenceOption of references; trackBy: trackReferenceById">{{referenceOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gestApp.partenaire.categories" for="field_categories">Categories</label>
+                    <select class="form-control" id="field_categories" name="categories" formControlName="categoriesId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="categorieOption.id" *ngFor="let categorieOption of categories; trackBy: trackCategorieById">{{categorieOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gestApp.partenaire.articles" for="field_articles">Articles</label>
+                    <select class="form-control" id="field_articles" name="articles" formControlName="articlesId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="articleOption.id" *ngFor="let articleOption of articles; trackBy: trackArticleById">{{articleOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gestApp.partenaire.reductions" for="field_reductions">Reductions</label>
+                    <select class="form-control" id="field_reductions" name="reductions" formControlName="reductionsId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="reductionOption.id" *ngFor="let reductionOption of reductions; trackBy: trackReductionById">{{reductionOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gestApp.partenaire.profiles" for="field_profiles">Profiles</label>
+                    <select class="form-control" id="field_profiles" name="profiles" formControlName="profilesId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="profileOption.id" *ngFor="let profileOption of profiles; trackBy: trackProfileById">{{profileOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gestApp.partenaire.habilitations" for="field_habilitations">Habilitations</label>
+                    <select class="form-control" id="field_habilitations" name="habilitations" formControlName="habilitationsId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="habilitationOption.id" *ngFor="let habilitationOption of habilitations; trackBy: trackHabilitationById">{{habilitationOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gestApp.partenaire.fournisseurs" for="field_fournisseurs">Fournisseurs</label>
+                    <select class="form-control" id="field_fournisseurs" name="fournisseurs" formControlName="fournisseursId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="fournisseurOption.id" *ngFor="let fournisseurOption of fournisseurs; trackBy: trackFournisseurById">{{fournisseurOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

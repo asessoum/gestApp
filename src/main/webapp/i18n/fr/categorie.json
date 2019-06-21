@@ -1,0 +1,31 @@
+{
+  "gestApp": {
+    "categorie": {
+      "home": {
+        "title": "Categories",
+        "createLabel": "Créer un nouveau Categorie",
+        "createOrEditLabel": "Créer ou éditer un Categorie",
+        "notFound": "Aucun Categorie trouvé"
+      },
+      "created": "Un nouveau Categorie a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Categorie avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Categorie avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Categorie {{ id }} ?"
+      },
+      "detail": {
+        "title": "Categorie"
+      },
+      "techID": "Tech ID",
+      "remoteID": "Remote ID",
+      "libelle": "Libelle",
+      "estActif": "Est Actif",
+      "creeLe": "Cree Le",
+      "creePar": "Cree Par",
+      "modifLe": "Modif Le",
+      "modifPar": "Modif Par",
+      "partenaire": "Partenaire",
+      "articles": "Articles"
+    }
+  }
+}

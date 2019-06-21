@@ -1,0 +1,45 @@
+{
+  "gestApp": {
+    "article": {
+      "home": {
+        "title": "Articles",
+        "createLabel": "Créer un nouveau Article",
+        "createOrEditLabel": "Créer ou éditer un Article",
+        "notFound": "Aucun Article trouvé"
+      },
+      "created": "Un nouveau Article a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Article avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Article avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Article {{ id }} ?"
+      },
+      "detail": {
+        "title": "Article"
+      },
+      "techID": "Tech ID",
+      "remoteID": "Remote ID",
+      "libelle": "Libelle",
+      "description": "Description",
+      "prixDeVente": "Prix De Vente",
+      "prixDeRevient": "Prix De Revient",
+      "margeBrute": "Marge Brute",
+      "estCompose": "Est Compose",
+      "uniteVente": "Unite Vente",
+      "pourcentageTva": "Pourcentage Tva",
+      "codeBarre": "Code Barre",
+      "estActif": "Est Actif",
+      "creeLe": "Cree Le",
+      "creePar": "Cree Par",
+      "modifLe": "Modif Le",
+      "modifPar": "Modif Par",
+      "partenaire": "Partenaire",
+      "categorie": "Categorie",
+      "reduction": "Reduction",
+      "fournisseur": "Fournisseur",
+      "composition": "Composition",
+      "stock": "Stock",
+      "ventes": "Ventes",
+      "mouvementStock": "Mouvement Stock"
+    }
+  }
+}

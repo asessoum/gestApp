@@ -1,0 +1,59 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="reference">
+            <h2><span jhiTranslate="gestApp.reference.detail.title">Reference</span> {{reference.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="gestApp.reference.techID">Tech ID</span></dt>
+                <dd>
+                    <span>{{reference.techID}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.reference.remoteID">Remote ID</span></dt>
+                <dd>
+                    <span>{{reference.remoteID}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.reference.libelleRef">Libelle Ref</span></dt>
+                <dd>
+                    <span>{{reference.libelleRef}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.reference.valeurRef">Valeur Ref</span></dt>
+                <dd>
+                    <span>{{reference.valeurRef}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.reference.estActif">Est Actif</span></dt>
+                <dd>
+                    <span>{{reference.estActif}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.reference.creeLe">Cree Le</span></dt>
+                <dd>
+                    <span>{{reference.creeLe}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.reference.creePar">Cree Par</span></dt>
+                <dd>
+                    <span>{{reference.creePar}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.reference.modifLe">Modif Le</span></dt>
+                <dd>
+                    <span>{{reference.modifLe}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.reference.modifPar">Modif Par</span></dt>
+                <dd>
+                    <span>{{reference.modifPar}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/reference-my-suffix', reference.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,34 @@
+{
+  "gestApp": {
+    "langue": {
+      "home": {
+        "title": "Langues",
+        "createLabel": "Créer un nouveau Langue",
+        "createOrEditLabel": "Créer ou éditer un Langue",
+        "notFound": "Aucun Langue trouvé"
+      },
+      "created": "Un nouveau Langue a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Langue avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Langue avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Langue {{ id }} ?"
+      },
+      "detail": {
+        "title": "Langue"
+      },
+      "techID": "Tech ID",
+      "remoteID": "Remote ID",
+      "libelle": "Libelle",
+      "estActif": "Est Actif",
+      "creeLe": "Cree Le",
+      "creePar": "Cree Par",
+      "modifLe": "Modif Le",
+      "modifPar": "Modif Par",
+      "pays": "Pays",
+      "clients": "Clients",
+      "partenaires": "Partenaires",
+      "fournisseurs": "Fournisseurs",
+      "employes": "Employes"
+    }
+  }
+}

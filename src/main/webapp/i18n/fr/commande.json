@@ -1,0 +1,38 @@
+{
+  "gestApp": {
+    "commande": {
+      "home": {
+        "title": "Commandes",
+        "createLabel": "Créer un nouveau Commande",
+        "createOrEditLabel": "Créer ou éditer un Commande",
+        "notFound": "Aucun Commande trouvé"
+      },
+      "created": "Un nouveau Commande a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Commande avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Commande avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Commande {{ id }} ?"
+      },
+      "detail": {
+        "title": "Commande"
+      },
+      "techID": "Tech ID",
+      "remoteID": "Remote ID",
+      "quantiteTotal": "Quantite Total",
+      "prixTotalCommande": "Prix Total Commande",
+      "prixHT": "Prix HT",
+      "tva": "Tva",
+      "validSup": "Valid Sup",
+      "validRes": "Valid Res",
+      "estActif": "Est Actif",
+      "creeLe": "Cree Le",
+      "creePar": "Cree Par",
+      "modifLe": "Modif Le",
+      "modifPar": "Modif Par",
+      "facture": "Facture",
+      "client": "Client",
+      "commercial": "Commercial",
+      "ventes": "Ventes"
+    }
+  }
+}

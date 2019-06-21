@@ -1,0 +1,38 @@
+{
+  "gestApp": {
+    "fournisseur": {
+      "home": {
+        "title": "Fournisseurs",
+        "createLabel": "Créer un nouveau Fournisseur",
+        "createOrEditLabel": "Créer ou éditer un Fournisseur",
+        "notFound": "Aucun Fournisseur trouvé"
+      },
+      "created": "Un nouveau Fournisseur a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Fournisseur avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Fournisseur avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Fournisseur {{ id }} ?"
+      },
+      "detail": {
+        "title": "Fournisseur"
+      },
+      "techID": "Tech ID",
+      "remoteID": "Remote ID",
+      "nomFournisseur": "Nom Fournisseur",
+      "tel": "Tel",
+      "email": "Email",
+      "siteWeb": "Site Web",
+      "logo": "Logo",
+      "description": "Description",
+      "estActif": "Est Actif",
+      "creeLe": "Cree Le",
+      "creePar": "Cree Par",
+      "modifLe": "Modif Le",
+      "modifPar": "Modif Par",
+      "partenaire": "Partenaire",
+      "langues": "Langues",
+      "articles": "Articles",
+      "adresses": "Adresses"
+    }
+  }
+}

@@ -1,0 +1,87 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="utilisateur">
+            <h2><span jhiTranslate="gestApp.utilisateur.detail.title">Utilisateur</span> {{utilisateur.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="gestApp.utilisateur.techID">Tech ID</span></dt>
+                <dd>
+                    <span>{{utilisateur.techID}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.utilisateur.remoteID">Remote ID</span></dt>
+                <dd>
+                    <span>{{utilisateur.remoteID}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.utilisateur.login">Login</span></dt>
+                <dd>
+                    <span>{{utilisateur.login}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.utilisateur.mdp">Mdp</span></dt>
+                <dd>
+                    <span>{{utilisateur.mdp}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.utilisateur.nom">Nom</span></dt>
+                <dd>
+                    <span>{{utilisateur.nom}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.utilisateur.prenom">Prenom</span></dt>
+                <dd>
+                    <span>{{utilisateur.prenom}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.utilisateur.dateNaissance">Date Naissance</span></dt>
+                <dd>
+                    <span>{{utilisateur.dateNaissance}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.utilisateur.telephone">Telephone</span></dt>
+                <dd>
+                    <span>{{utilisateur.telephone}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.utilisateur.email">Email</span></dt>
+                <dd>
+                    <span>{{utilisateur.email}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.utilisateur.dateMajMdp">Date Maj Mdp</span></dt>
+                <dd>
+                    <span>{{utilisateur.dateMajMdp}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.utilisateur.statusConnexion">Status Connexion</span></dt>
+                <dd>
+                    <span>{{utilisateur.statusConnexion}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.utilisateur.estActif">Est Actif</span></dt>
+                <dd>
+                    <span>{{utilisateur.estActif}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.utilisateur.creeLe">Cree Le</span></dt>
+                <dd>
+                    <span>{{utilisateur.creeLe}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.utilisateur.creePar">Cree Par</span></dt>
+                <dd>
+                    <span>{{utilisateur.creePar}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.utilisateur.modifLe">Modif Le</span></dt>
+                <dd>
+                    <span>{{utilisateur.modifLe}}</span>
+                </dd>
+                <dt><span jhiTranslate="gestApp.utilisateur.modifPar">Modif Par</span></dt>
+                <dd>
+                    <span>{{utilisateur.modifPar}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/utilisateur-my-suffix', utilisateur.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>
